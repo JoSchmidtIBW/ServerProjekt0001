@@ -26,5 +26,3 @@ close server with ctrl+c
 # Unit-Tests
 start tests with `npm run test`
 mit script mocha, nur noch --> `npm test`
-
--- Achtung, dabei nur test laufen lassen, nicht auch noch den server gleichzeitig!!! --
