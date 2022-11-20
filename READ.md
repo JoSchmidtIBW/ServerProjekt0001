@@ -7,10 +7,12 @@ npm install
 ```
 
 
-start with `npm run dev` --> start with nodemon (server start automatically, when do some code- changes)
+start server with `npm run dev` --> start with nodemon (server start automatically, when do some code- changes)
 
 or
 
-start with `node server.mjs`
+start server with `node server.mjs`
 or
-start with `npm run start`
+start serve with `npm run start`
+
+close server with ctrl+c
