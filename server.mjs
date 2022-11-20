@@ -1,10 +1,14 @@
+
+
 import express from "express";
 
 import dbPool from './lib/db.mjs';
 
+
+
 //const express = require('express')
 const app = express()
-const port = 7007
+const port = 7080
 
 
 
@@ -38,10 +42,21 @@ console.log("Hello world4");
 console.log("Hello world1");
 console.log("Hello world");
 console.log("Hello Kitty");
+
+export default function sum(a, b) {
+    return a + b;
+}
+console.log("sum: "+sum(4,3))
+
+a_Plus_b(1,2);
+function a_Plus_b(a,b){
+    let result = a+b;
+    console.log("a+b= "+ result);
+}
+
 console.log("Hello world");
 
 console.log("Hello Kitty");
 app.listen(port, () => {
     console.log(`Server running on port: http://localhost:${port}`)
 })
-//app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
