@@ -27,3 +27,4 @@ close server with ctrl+c
 start tests with `npm run test`
 mit script mocha, nur noch --> `npm test`
 nicht gleichzeitig server und test starten 666666/777
+7
