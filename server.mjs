@@ -11,6 +11,22 @@ const app = express()
 const port = 7080
 
 
+//setup
+app.set("case sensitive routing", false); //um url gross oder klein schreiben link /users   /Users
+app.set("view engine", "ejs");
+
+//middleware
+app.use(express.static('public')); //der public ordner wird als pfad genommen
+//zb servstatic zb bilder oder localhost:1337/style.css
+// oder localhost:1337/express/index.js
+// oder app.use(express.static('node_modules'));//clientseitiger code, desshalb gitignore
+//localhost:1337/express/index.js
+//lädt middleware beliebigen pfad
+
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 
 
 
