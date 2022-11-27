@@ -27,7 +27,7 @@ app.get('/d', async(req, res) => {
         //conn = await pool.getConnection();
         conn = await dbPool.getConnection();
         console.log(conn + "**************************"); //komt im console von vs code, aber nicht in konsole browser
-        const rows = await conn.query(`SELECT * FROM userMubeaX WHERE ID_User=1;`);
+        const rows = await conn.query(`SELECT * FROM userVerkaufMubea WHERE ID_User=1;`);
         console.log(rows);
         const jsonS = JSON.stringify(rows);
         console.log(jsonS)
