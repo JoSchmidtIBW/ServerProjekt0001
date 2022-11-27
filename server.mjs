@@ -4,7 +4,7 @@ import express from "express";
 
 import dbPool from './lib/db.mjs';
 
-
+import loginRoutes from './routes/loginRoute.mjs'
 
 //const express = require('express')
 const app = express()
@@ -28,7 +28,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
-
+// all routes in here starting with /login
+app.use('/api/login', loginRoutes);
 
 
 app.get('/', (req, res) => {
