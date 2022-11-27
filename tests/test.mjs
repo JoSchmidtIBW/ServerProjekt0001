@@ -8,6 +8,11 @@ describe("Test server.mjs", function() {
     })
 })
 
+
+// ev muss der server ausgeschaltet sein
+// starten mit npm run test
+
+
 /*
 import {MyClass} from "../zuTestenVersuch.mjs"
 
