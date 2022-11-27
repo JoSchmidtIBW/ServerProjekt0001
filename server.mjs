@@ -5,6 +5,8 @@ import express from "express";
 import dbPool from './lib/db.mjs';
 
 import loginRoutes from './routes/loginRoute.mjs'
+import registryRoutes from './routes/registryRoute.mjs'
+
 
 //const express = require('express')
 const app = express()
@@ -17,6 +19,10 @@ app.set("view engine", "ejs");
 
 //middleware
 app.use(express.static('public')); //der public ordner wird als pfad genommen
+//app.use(express.static("public"));
+//app.use('/public', express.static('public'));
+//app.use(express.static(__dirname + '/public'));
+//app.use(express.static(__dirname + '/public'));
 //zb servstatic zb bilder oder localhost:1337/style.css
 // oder localhost:1337/express/index.js
 // oder app.use(express.static('node_modules'));//clientseitiger code, desshalb gitignore
@@ -30,6 +36,8 @@ app.use(express.urlencoded({ extended: false }));
 
 // all routes in here starting with /login
 app.use('/api/login', loginRoutes);
+// all routes in here starting with /registrieren
+app.use('/api/registrieren', registryRoutes);
 
 
 app.get('/', (req, res) => {
