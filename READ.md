@@ -10,6 +10,8 @@ Frameworks:
 `npm install express` a Node.js web application framework
 `npm install mariadb` the NodeJS MariaDB Connector
 `npm install mocha` a testing library for Node. js
+`npm install ejs`  weil man da auch antworten vom server schreiben kann, im html
+// ev socket io oder websocketio für antworten von server und client
 
 start server with `npm run dev` --> start with nodemon (server start automatically, when do some code- changes)
 
