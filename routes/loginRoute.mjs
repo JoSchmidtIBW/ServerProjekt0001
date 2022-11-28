@@ -121,6 +121,8 @@ router.get("/l", (req, res) => { // pfad, der alles entgegennimmt
         console.log(err.message);
     })
 */
+    //todo zb ein button, welcher auf der gleichen seite die farbe von was andwerem ändert
+    // juck norris witz anzeigen
 
     //var myVar = " -->(ich bin eine Variable)<-- ";
     //let myVar = witz2;
