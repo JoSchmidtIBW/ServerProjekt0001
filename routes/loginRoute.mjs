@@ -76,13 +76,25 @@ router.get("/l", (req, res) => {
 });
 
 let computerSciencePortal = "GeeksforGeeks";
+//let spitzname = "";
 
+
+//-----------------
+//var bodyParser = require("body-parser");
+//app.use(bodyParser.urlencoded({ extended: false }));
+//----------------
+//todo zb button "weiter" erst drücken, wenn spitzname 1 und spitzname 2 eingegeben, jedoch verliert der erste dann den wert
 router.post('/l', function (req, res) {
     var name = req.body.firstName + ' ' + req.body.lastName;
+
+    var spitzname = req.body.spitzname;
+    var spitzname2 = req.body.spitzname2;
 
     //res.send(name + ' Submitted Successfully!');
     res.render('login', {
         myVar : name,
+        spitzname : spitzname,
+        spitzname2 : spitzname2,
         xClicker: clicker()
     });
 });
