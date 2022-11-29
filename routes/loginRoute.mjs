@@ -77,6 +77,16 @@ router.get("/l", (req, res) => {
 
 let computerSciencePortal = "GeeksforGeeks";
 
+router.post('/l', function (req, res) {
+    var name = req.body.firstName + ' ' + req.body.lastName;
+
+    //res.send(name + ' Submitted Successfully!');
+    res.render('login', {
+        myVar : name,
+        xClicker: clicker()
+    });
+});
+
 export default router;
 
 /*
