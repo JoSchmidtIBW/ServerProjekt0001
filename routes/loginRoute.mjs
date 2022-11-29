@@ -74,7 +74,7 @@ router.get('/',  (req, res) => {
 let myVar = "jjjj"
 function clicker() {
     myVar = "blabla";
-    console.log("Button Working!");
+    console.log("Button Working! ich bin loginRoute.mjs achtung, funktioniere auch wenn browser aktualisiert wird");
 };
 
 router.get("/l", (req, res) => {

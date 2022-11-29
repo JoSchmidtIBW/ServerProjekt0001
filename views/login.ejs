@@ -27,6 +27,34 @@
 
     <button><a href="/api/registrieren">go to Register</a></button>
 
+    <br>
+        <a href="#" id="joke" onclick="loadJoke()">Nächsten Witz anzeigen!</a>
+        <p id="j"></p>
+
+<script>
+console.log("ich bin login.ejs, jedoch werde ich im Browser angezeigt");
+//todo wie main.js auslagern?????   type=application..json
+ async function loadJoke() {
+            try { //hier wäre fehler status 400
+                const response = await fetch('https://api.chucknorris.io/jokes/random');
+                console.log(response);
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data);
+                    console.log(data.value);
+                    document.getElementById('j').innerText = data.value;
+                } else {
+                    console.error(await response.text);
+                    document.getElementById('j').innerText = "Kein Internet!!!";
+                }
+            } catch (e) {
+                console.error(e);
+                document.getElementById('j').innerText = "Kein Internet!!!";
+            }
+        }
+
+</script>
+
 </body>
 
 </html>
