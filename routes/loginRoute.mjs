@@ -63,13 +63,39 @@ let result = witz2.then(function(result) {
 */
 
 let computerSciencePortal = "GeeksforGeeks";
+/*
+function click(){
+    console.log('Button clicked')
+}
+router.get('/',  (req, res) => {
+    res.render('login', {});
+});
+*/
+let myVar = "jjjj"
+function clicker() {
+    myVar = "blabla";
+    console.log("Button Working!");
+};
+
+router.get("/l", (req, res) => {
+
+    res.render('login', {
+        myVar : myVar,
+        xClicker: clicker()
+    });
+});
 
 
 
 // http://localhost:7080/api/login/l
 // --> ohne /l, --> nur /
-
+/*
 router.get("/l", (req, res) => { // pfad, der alles entgegennimmt
+
+
+
+
+
     async function loadJoke() {
         try { //hier wäre fehler status 400
             const response = await fetch('https://api.chucknorris.io/jokes/random');
@@ -126,6 +152,8 @@ router.get("/l", (req, res) => { // pfad, der alles entgegennimmt
 
     //var myVar = " -->(ich bin eine Variable)<-- ";
     //let myVar = witz2;
+
+/*
     let myVar = result;
     console.log(myVar)
     //var myVar = result;
@@ -136,7 +164,7 @@ router.get("/l", (req, res) => { // pfad, der alles entgegennimmt
 
     //end
 });
-
+*/
 
 
 export default router;

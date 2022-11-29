@@ -44,6 +44,11 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
+function click(){
+    console.log('Buttooooooon clicked')
+}
+
+
 app.get('/d', async(req, res) => {
     //res.send("Hello from Hxxxxxxxxxxxxxxomepage.");
     console.log('Halloooo from /d');
