@@ -46,14 +46,12 @@ async function loadJoke() {
     }
 }
 
-
 async function witzfunction() {
     const response = await fetch("https://api.chucknorris.io/jokes/random");
     let data = await response.json();
     return data;
 }
 let witz = witzfunction();
-
 
 let witz2 = loadJoke();
 let result = witz2.then(function(result) {
@@ -62,19 +60,11 @@ let result = witz2.then(function(result) {
 })
 */
 
-let computerSciencePortal = "GeeksforGeeks";
-/*
-function click(){
-    console.log('Button clicked')
-}
-router.get('/',  (req, res) => {
-    res.render('login', {});
-});
-*/
-let myVar = "jjjj"
+let myVar = 0;
 function clicker() {
-    myVar = "blabla";
-    console.log("Button Working! ich bin loginRoute.mjs achtung, funktioniere auch wenn browser aktualisiert wird");
+    //myVar = "blabla";
+    myVar = myVar + 1;
+    console.log("Button Working! ich bin loginRoute.mjs" + myVar);
 };
 
 router.get("/l", (req, res) => {
@@ -85,86 +75,129 @@ router.get("/l", (req, res) => {
     });
 });
 
+let computerSciencePortal = "GeeksforGeeks";
 
+export default router;
+
+/*
+
+/*
+function myFunc(){
+    console.log("Bin myFunc()... gebe was aus");
+}
+
+async function loadJoke1() {
+    try { //hier wäre fehler status 400
+        const response = await fetch('https://api.chucknorris.io/jokes/random');
+        console.log(response);
+        if (response.ok) {
+            const data = await response.json();
+            //console.log(data);
+            console.log("---> "+data.value);
+            //document.getElementById('j').innerText = data.value;
+        } else {
+            console.error(await response.text);
+            //document.getElementById('j').innerText = "Kein Internet!!!";
+        }
+    } catch (e) {
+        console.error(e);
+        //document.getElementById('j').innerText = "Kein Internet!!!";
+    }
+}
+
+async function loadJoke() {
+    try { //hier wäre fehler status 400
+        const response = await fetch('https://api.chucknorris.io/jokes/random');
+         console.log(response);
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            console.log("**************");
+            console.log(data.value);
+
+            console.log("**************");
+            return data.value;
+            //document.getElementById('j').innerText = data.value;
+        } else {
+            console.error(await response.text);
+            //document.getElementById('j').innerText = "Kein Internet!!!";
+        }
+    } catch (e) {
+        console.error(e);
+        //document.getElementById('j').innerText = "Kein Internet!!!";
+    }
+}
 
 // http://localhost:7080/api/login/l
 // --> ohne /l, --> nur /
-/*
+
 router.get("/l", (req, res) => { // pfad, der alles entgegennimmt
-
-
-
-
-
-    async function loadJoke() {
-        try { //hier wäre fehler status 400
-            const response = await fetch('https://api.chucknorris.io/jokes/random');
-            // console.log(response);
-            if (response.ok) {
-                const data = await response.json();
-                //console.log(data);
-                console.log("**************");
-                console.log(data.value);
-                console.log("**************");
-                //document.getElementById('j').innerText = data.value;
-            } else {
-                //console.error(await response.text);
-                //document.getElementById('j').innerText = "Kein Internet!!!";
-            }
-        } catch (e) {
-            //console.error(e);
-            //document.getElementById('j').innerText = "Kein Internet!!!";
-        }
+/*
+    async function my_async_fn() {
+        let response = await fetch('https://api.chucknorris.io/jokes/random');
+        console.log(response); // Logs the response
+        return response;
     }
 
-    let witz2 = loadJoke();
-    //console.log("------------ "+witz2)
-    let result = witz2.then(function(result) {
-        console.log(result + " Some User token") // "Some User token"
-        return result;
-    })
-    console.log("------------ "+result)
-
-    //console.log(witz2)
-    console.log("loginRoute.mjs: "+computerSciencePortal);
-    //console.log(req)
-    //header
-    //res.send("<h1>Hallo loginRoute.mjs login</h1>");
-    //res.send(computerSciencePortal);
-
-    /*
-    const url = "https://jsonmock.hackerrank.com/api/movies";
-    https.get(url, res => {
-        let data = '';
-        res.on('data', chunk => {
-            data += chunk;
-        });
-        res.on('end', () => {
-            data = JSON.parse(data);
-            console.log(data);
-        })
-    }).on('error', err => {
-        console.log(err.message);
-    })
+    console.log("my_async_FN "+my_async_fn());
 */
-    //todo zb ein button, welcher auf der gleichen seite die farbe von was andwerem ändert
-    // juck norris witz anzeigen
-
-    //var myVar = " -->(ich bin eine Variable)<-- ";
-    //let myVar = witz2;
-
 /*
-    let myVar = result;
-    console.log(myVar)
-    //var myVar = result;
-    res.render('login',{ myVar : myVar }); //login.ejs
+myFunc();
+loadJoke1();
 
+let witz2 = loadJoke();
+*/
+/*
+const promise1 = Promise.resolve(loadJoke());
 
-   //res.render('testPage', { myVar : myVar });
-
-    //end
+promise1.then((value) => {
+console.log(value);
+// expected output: 123
 });
 */
+/*
+console.log("------*****------ "+witz2)
+let result1 = witz2.then(function(result) {
+    console.log(result + " Some User token") // "Some User token"
+    return result;
+})
+console.log("------------ "+result1)
 
+//console.log(witz2)
+console.log("loginRoute.mjs: "+computerSciencePortal);
+//console.log(req)
+//header
+//res.send("<h1>Hallo loginRoute.mjs login</h1>");
+//res.send(computerSciencePortal);
 
-export default router;
+/*
+const url = "https://jsonmock.hackerrank.com/api/movies";
+https.get(url, res => {
+    let data = '';
+    res.on('data', chunk => {
+        data += chunk;
+    });
+    res.on('end', () => {
+        data = JSON.parse(data);
+        console.log(data);
+    })
+}).on('error', err => {
+    console.log(err.message);
+})
+*/
+//    https://stackoverflow.com/questions/34921875/unable-to-get-local-issuer-certificate-vscode
+
+//var myVar = " -->(ich bin eine Variable)<-- ";
+//let myVar = witz2;
+/*
+let myVar = "  hopp ";
+//let myVar = result1;
+console.log(myVar)
+//var myVar = result;
+res.render('login',{ myVar : myVar }); //login.ejs
+
+//res.render('testPage', { myVar : myVar });
+
+//end
+});
+*/

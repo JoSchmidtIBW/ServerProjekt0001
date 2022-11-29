@@ -18,7 +18,8 @@ app.set("case sensitive routing", false); //um url gross oder klein schreiben li
 app.set("view engine", "ejs");
 
 //middleware
-app.use(express.static('public')); //der public ordner wird als pfad genommen
+//app.use(express.static('public')); //der public ordner wird als pfad genommen
+app.use("/public", express.static('public'))
 //app.use(express.static("public"));
 //app.use('/public', express.static('public'));
 //app.use(express.static(__dirname + '/public'));
