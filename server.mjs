@@ -18,7 +18,8 @@ app.set("case sensitive routing", false); //um url gross oder klein schreiben li
 app.set("view engine", "ejs");
 
 //middleware
-app.use(express.static('public')); //der public ordner wird als pfad genommen
+//app.use(express.static('public')); //der public ordner wird als pfad genommen
+app.use("/public", express.static('public'))
 //app.use(express.static("public"));
 //app.use('/public', express.static('public'));
 //app.use(express.static(__dirname + '/public'));
@@ -44,6 +45,11 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
+function click(){
+    console.log('Buttooooooon clicked')
+}
+
+
 app.get('/d', async(req, res) => {
     //res.send("Hello from Hxxxxxxxxxxxxxxomepage.");
     console.log('Halloooo from /d');
@@ -62,11 +68,10 @@ app.get('/d', async(req, res) => {
         //res.send("Hello from Hxxxxxxxttttttttttxxxxxxxomepage.");
     } catch (e) {}
 });
-console.log("Hello world3");
-console.log("Hello world4");
-console.log("Hello world1");
-console.log("Hello world");
-console.log("Hello Kitty");
+
+
+console.log("ich bin server.mjs");
+
 
 export default function sum(a, b) {
     return a + b;
@@ -79,9 +84,6 @@ function a_Plus_b(a,b){
     console.log("a+b= "+ result);
 }
 
-console.log("Hello world");
-
-console.log("Hello Kitty");
 app.listen(port, () => {
     console.log(`Server running on port: http://localhost:${port}`)
 })

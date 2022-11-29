@@ -6,25 +6,121 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- <link rel="./public/stylesheet" href="styleLogin.css" type="text/css">  -->
-    <!-- <link rel="/public/stylesheet" href="styleLogin.css" type="text/css"> -->
+        <!-- <link rel="/public/stylesheet" href="styleLogin.css" type="text/css"> -->
     <!-- <link rel="stylesheet" href="public/styleLogin.css"> -->
-    <link href="/css/styleLogin.css" rel="stylesheet" type="text/css">
+   <!-- <link rel="preload" href="/js/mainLogin.mjs" as="script" /> -->
+    <!-- <link  rel="script preload" href="/js/mainLogin.mjs" rel="preload" as="script"> -->
 
+   <!--  <script type="application/json"  src="mainLogin.mjs" defer></script>   -->
+    <!-- type="text/javascript" -->
+   <!-- <script type="text/javascript"  src="mainLogin.mjs" defer></script> -->
+   <!-- <script src='./public/mainLogin.mjs' type="application/json"></script> -->
+    <link type="text/css" rel="stylesheet" href="/public/css/styleLogin.css" media="all">
+    <!-- <link src="/css/styleLogin.css" rel="stylesheet" type="text/css"> -->
+   <!-- <link href="/css/styleLogin.css" rel="stylesheet" type="text/css"> -->
+
+   <script type="text/javascript" src="/public/js/mainLogin.mjs"></script>
     <title>Login-Verkauf_Mubea</title>
 </head>
 
 <body>
-<h1>das ist login.ejs xxxxin views</h1>
+<h1>das ist login.ejs xxxxin <%= myVar %> views</h1>
+
+<!-- <script type="application/json" src="mainLogin.mjs" defer></script> -->
+
+<!-- text/javascript -->
 
     <button>go registrieren</button>
 
     <li id="google"><a href="https://www.google.ch/">GOOGLE</a></li>
 
-
-
     <button><a href="/api/registrieren">go to Register</a></button>
+
+     <button class = 'btn btn-primary' onclick = "<%= xClicker %>">Click Me!</button>
+
+<br>
+<% for(let i = 0; i<5;i++) { %>
+    <% let text = "ungerade"
+       if(i%2===0) {
+        text = "gerade"
+    }%>
+   <!-- <p>Hallo <%=  %>  Welt, <%= i %> : <%= text%>   </p> -->
+    <p>Hallo  mit Level  Welt, <%= i %> : <%= text%>   </p>
+<% } %>
+
+<!-- %... wird server seitig ausgeführt -->
+
+<br>
+
+</script>
+
+<!-- das ist hier serversitiges javascript -->
+<br>
+
+<br>
+
+<a>Haaaalllllllo</a>
+
+ <button class = 'btnClickyyy' onclick = "myFunctionClicky()">OK</button>
+<br>
+    <a href="#" id="joke" onclick="loadJoke()">Nächsten Witz anzeigen!</a>
+    <p id="j"></p>
+
+    <!-- <script type="application/json"  src="../public/mainLogin.mjs"></script> -->
+   <!-- <script type="application/json"  href="../public/mainLogin.mjs" crossorigin="anonymous"></script> -->
+
+    <script>
+        console.log("Ich bin main.js in views, werde aufgerufen durch login.ejs in views und ich stehe in der console vom browser");
+
+        async function loadJoke() {
+            try { //hier wäre fehler status 400
+                const response = await fetch('https://api.chucknorris.io/jokes/random');
+                console.log(response);
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data);
+                    console.log(data.value);
+                    document.getElementById('j').innerText = data.value;
+                } else {
+                    console.error(await response.text);
+                    document.getElementById('j').innerText = "Kein Internet!!!";
+                }
+            } catch (e) {
+                console.error(e);
+                document.getElementById('j').innerText = "Kein Internet!!!";
+            }
+        }
+       // <script nonce="// cspNonce %>">
+
+// helmet sagen, das dies erlaubt ist, wenn script von server kommt, also nicht das untere
+//for(let i = 0; i<5;i++){
+//    document.write('<p>hallööö</p>');
+//}
+
+            // helmet muss dafür deaktiviert sein
+    // weil es inline ist, müsste hashwert haben zeugs
+    // über script wird client seitig ausgeführt
+    for(let i = 0; i<5;i++){
+        document.write('<p>hallööö</p>');
+    }
+        </script>
 
 </body>
 
 </html>
+
+<!--
+<h1>Mein SSR-Template</h1>
+<a>server-side-rendering mit ejs</a>
+-->
+<!-- <link rel="./public/stylesheet" href="styleLogin.css" type="text/css">  -->
+    <!-- <link rel="/public/stylesheet" href="styleLogin.css" type="text/css"> -->
+    <!-- <link rel="stylesheet" href="public/styleLogin.css"> -->
+   <!-- <link rel="preload" href="/js/mainLogin.mjs" as="script" /> -->
+    <!-- <link  rel="script preload" href="/js/mainLogin.mjs" rel="preload" as="script"> -->
+
+   <!--  <script type="application/json"  src="mainLogin.mjs" defer></script>   -->
+    <!-- type="text/javascript" -->
+   <!-- <script type="text/javascript"  src="mainLogin.mjs" defer></script> -->
+   <!-- <script src='./public/mainLogin.mjs' type="application/json"></script> -->
+-->
