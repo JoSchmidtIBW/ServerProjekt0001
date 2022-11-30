@@ -70,7 +70,7 @@ app.get('/d', async(req, res) => {
 });
 
 
-console.log("ich bin server.mjs");
+console.log("ich bin server.mjs");//
 
 
 export default function sum(a, b) {
