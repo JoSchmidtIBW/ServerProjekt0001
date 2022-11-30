@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link type="text/css" rel="stylesheet" href="/public/css/styleRegistry.css" media="all">
-        <!-- <link href="public/css/styleRegistry.css" rel="stylesheet" type="text/css"> -->
+    <link type="text/css" rel="stylesheet" href="/public/css/styleRegistry.css" media="all">
 
 
     <title>Registrieren-Verkauf_Mubea</title>
@@ -15,9 +14,47 @@
 
 <body>
     <h1>das ist registrieren.ejs in views</h1>
+    <!--<a class="aboutUS">by C.Tschenet / J.Schmidt</a>-->
+    <div class="aboutUS">by C.Tschenet / J.Schmidt</div>
+
+    <br>
+    <form action="/api/registrieren" method="post">
+        MaNummer: <input name="MaNummer" type="text" id="inputMaNummer"/>
+        <button type="button" id="btnMa_Nummer" onclick="btnMa_NummerOK()">OK</button><a id="lbAusgabeMaNummer"></a><button type="button" id="btnMaNummer2" onclick="btnMaNummerOK2()">OK</button><br>
+        Vorname: <input name="Vorname" type="text" />
+        <br><a id="lbAusgabeVorname"></a>
+        Nachname: <input name="Nachname" type="text" />
+        <br><a id="lbAusgabeNachname"></a>
+        Passwort_User: <input name="Passwort_User" type="text" />
+        <br><a id="lbAusgabePasswort_User"></a>
+        IstChef: <input name="IstChef" type="text" />
+        <br><a id="lbAusgabeIstChef"></a>
+        <input type="submit" value="alles bestätigen" />
+        <a>UserVerkaufMubea:   </a>
+        <a id="lbAusgabeUserVerkaufMubea"><%= MaNummer %> , <%= Vorname %>, <%= Nachname %>, <%= Passwort_User %>, <%= IstChef %></a>
+    </form>
+    <br>
 
     <button><a href="/api/login/l">go to Login</a></button>
 
+    <div class="calculate" id="calculate">
+            <div class="button" id="button" onclick="myCode(this.body)"> CALCULATE ! </div>
+        </div>
+
+    <br>
+    <br>
+
+
+
+    <footer class="footer-Registrieren">
+        <!-- Reihenfolge-->
+        <div style="float: left; background-color: lightgray;"><a class="pCopyRFooter">© C.Tschenet / J.Schmidt</a></div>
+        <div style="float: right; background-color: lightgray;"><a class="pDateFooter">Dez. 2022 / Jan. 2023</a></div>
+        <div style="margin: 0 auto; width: 100px;"><a>Version 1.0</a></a></div>
+
+    </footer>
+
+    <script type="text/javascript" src="/public/js/mainRegistrieren.mjs" ></script>
 </body>
 
 </html>

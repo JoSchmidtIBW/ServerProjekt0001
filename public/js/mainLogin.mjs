@@ -1,8 +1,20 @@
+
 console.log("MainLogin.js halllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
 
 function myFunctionClicky(){
     console.log("halllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
 }
+
+//let lbAusgabeSpitzname1 = document.getElementById('lbAusgabeSpitzname1');
+//lbAusgabeSpitzname1.style.color = "blue";
+//document.getElementById('2').style.backgroundColor="red";
+//lbAusgabeSpitzname1.style.backgroundColor="red";
+
+// erst wenn existiert, kann man farbe machen
+document.addEventListener("DOMContentLoaded", function () {
+   // document.getElementById("lbAusgabeSpitzname1").style.fontSize = "24px";
+    //document.getElementById('lbAusgabeSpitzname1').style.backgroundColor="red";
+});
 
 
 async function loadJoke() {
