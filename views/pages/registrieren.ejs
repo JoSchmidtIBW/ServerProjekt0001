@@ -17,9 +17,9 @@
     <!--<a class="aboutUS">by C.Tschenet / J.Schmidt</a>-->
     <div class="aboutUS">by C.Tschenet / J.Schmidt</div>
 
-    <br>
+    <br><!-- Komisch, muss haben value="value"  -->
     <form action="/api/registrieren" method="post">
-        MaNummer: <input name="MaNummer" type="text" id="inputMaNummer" value="value"/>
+        MaNummer: <input name="MaNummer" type="text" id="inputMaNummer" />
         <button type="button" id="btnMa_Nummer" onclick="btnMa_NummerOK()">OK</button><a id="lbAusgabeMaNummer"></a><button type="button" id="btnMaNummer2" onclick="btnMaNummerOK2()">OK</button><br>
         Vorname: <input name="Vorname" type="text" />
         <br><a id="lbAusgabeVorname"></a>

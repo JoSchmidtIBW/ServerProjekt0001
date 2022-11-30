@@ -79,7 +79,7 @@ function clicker() {
 
 router.get("/l", (req, res) => {
 
-    res.render('login', {
+    res.render('pages/login', {
         myVar : myVar,
         spitzname : spitzname,
         spitzname2 : spitzname2,
@@ -89,7 +89,11 @@ router.get("/l", (req, res) => {
 
 router.post("/l", (req, res) => {
 
-    res.render('login', {
+    spitzname = req.body.spitzname;
+    spitzname2 = req.body.spitzname2;
+    console.log("spitzname: "+spitzname);
+
+    res.render('pages/login', {
         myVar : myVar,
         spitzname : spitzname,
         spitzname2 : spitzname2,

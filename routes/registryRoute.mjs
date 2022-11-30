@@ -17,7 +17,7 @@ router.get("/", (req, res) => { // pfad, der alles entgegennimmt
     //console.log(req)
     //header
     //res.send("<h1>Hallo loginRoute.mjs login</h1>");
-    res.render('registrieren', {
+    res.render('pages/registrieren', {
         MaNummer: maNummer,
         Vorname: vorname,
         Nachname: nachname,
@@ -44,7 +44,7 @@ router.post('/', async function (req, res) {
     console.log(maNummer+"uzhuhunhj")
 
     if(maNummer.length===0||vorname.length===0||nachname.length===0||passwort_User.length===0||istChef.length===0){
-        res.render('registrieren', {
+        res.render('pages/registrieren', {
             MaNummer: maNummer,
             Vorname: vorname,
             Nachname: nachname,
@@ -63,7 +63,7 @@ router.post('/', async function (req, res) {
 
         } catch (e) {}
 
-        res.render('Registrieren', {
+        res.render('pages/Registrieren', {
             MaNummer: maNummer,
             Vorname: vorname,
             Nachname: nachname,
