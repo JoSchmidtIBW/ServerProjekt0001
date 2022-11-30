@@ -1,3 +1,63 @@
-h1 {
-    background-color: orange;
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@500&family=Poppins:ital,wght@1,200&display=swap');
+body {
+    background-color: lightgrey;
+    font-family: 'Khand', sans-serif;
+    /* margin: 0px;*/
+    margin-left: 10px;
+}
+
+.h1 {
+    color: orange;
+    display: block;
+    background-color: lightgrey;
+    font-family: 'Khand', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 34px;
+    margin-top: 0em;
+    margin-bottom: -0.4em;
+    /* margin: 0em;*/
+    margin-left: 10px;
+    letter-spacing: 1px;
+}
+
+.aboutUS {
+    display: block;
+    margin-top: 5em;
+    margin-bottom: 0em;
+    margin: 0em;
+    color: silver;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    text-shadow: 0.2px 0.3px gray;
+    margin-left: 10px;
+    letter-spacing: -1px;
+}
+
+.footer-Registriere {
+    color: #696969;
+    border-style: solid;
+    border-color: silver darkgray darkgray darkgray;
+    border-top-left-radius: 0.4em;
+    border-width: 1px;
+    background-color: lightgray;
+    font-family: 'Khand';
+    font-size: 11px;
+    /*damit foot immer ganz unten, geht auch mit flex*/
+    position: absolute;
+    bottom: 0;
+    width: 99.5%;
+    margin-left: 1px;
+    /*margin-top: 100px;*/
+    /*margin-bottom: 10px;*/
+    padding: 10px;
+}
+
+.pCopyRFooter {
+    margin-left: 10px;
+}
+
+.pDateFooter {
+    margin-right: 20px;
 }
