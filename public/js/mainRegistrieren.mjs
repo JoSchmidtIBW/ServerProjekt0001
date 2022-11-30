@@ -7,15 +7,18 @@ try{
 
         //window.addEventListener('error', function(event) { ... })
         let inputMaNummer = document.getElementById('**MainContent_**inputMaNummer');
+        let inputMaNummer1 = document.getElementById('inputMaNummer');
+        var nameValue = document.getElementById("inputMaNummer").value;
+        console.log(nameValue+"66666666666666666666666");
         let lbAusgabeMaNummer = document.getElementById('lbAusgabeMaNummer');
         //console.log(inputMA_Nummer[0].innerText.length);
        // console.log(inputMaNummer.textContent.length);
-        console.log(inputMaNummer.innerText.length);
-        console.log(inputMaNummer.nodeValue);
-        console.log(inputMaNummer.textContent);
-        console.log(inputMaNummer.innerText);
-        console.log(inputMaNummer.nodeValue);
-        console.log(inputMaNummer[0].value); //if this is the first textbox in your page.
+        //console.log(inputMaNummer.innerText.length);
+        //console.log(inputMaNummer.nodeValue);
+       // console.log(inputMaNummer.textContent);
+        //console.log(inputMaNummer.innerText);
+       // console.log(inputMaNummer.nodeValue);
+       // console.log(inputMaNummer[0].value); //if this is the first textbox in your page.
         //kein MA_Nummer mit underLinie machen!!
 
     }
