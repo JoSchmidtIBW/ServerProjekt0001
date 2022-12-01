@@ -1,5 +1,48 @@
 //todo Problem document.getElementbyId().innerTest.value…. es goht eifach ned, alles scho probiert.... wtf
 // todo registrieren.css h1 macht nicht orange
+//Todo das hier wird wahrscheinlich der controller clientseitig sein
+// um von hier zb ein boolean an den server zu schicken, braucht es ein controller serverseitig
+// ausser, mann mach im main.js ein type="module".... dann geht aber dieses hier nicht
+/*
+function btnMaNummerOK(){
+    console.log("btnMaNummerOK wurde geklickt");
+
+    //window.addEventListener('error', function(event) { ... })
+    let inputMaNummer = document.getElementById('inputMaNummer').value;
+    console.log(inputMaNummer + " jjjjjjjjjjjjjjjjjjjjjjjj")
+    let lbAusgabeMaNummer = document.getElementById('lbAusgabeMaNummer');
+
+
+    if(inputMaNummer.length===0){
+        lbAusgabeMaNummer.style.backgroundColor = "red";
+        lbAusgabeMaNummer.innerText = "Hallo Rot"
+        inputMaNummer.innerText = "Es soll die Mitarbeiter- Nummer eingegeben werden!";
+        isMaNummerEingabeRichtig = false;
+        return isMaNummerEingabeRichtig;
+    }
+    else if(inputMaNummer.length>=0){
+        lbAusgabeMaNummer.style.backgroundColor = "green";
+        lbAusgabeMaNummer.innerText = "Hallo grün"
+        document.getElementById('inputMaNummer').value = 'voll';
+        isMaNummerEingabeRichtig = true;
+        return isMaNummerEingabeRichtig;
+    }
+
+    isMaNummerEingabeRichtig = false;
+    return isMaNummerEingabeRichtig;
+
+}
+
+
+
+
+ */
+
+
+
+
+
+
 
 //try{
     function btnMaNummerOK2(){
