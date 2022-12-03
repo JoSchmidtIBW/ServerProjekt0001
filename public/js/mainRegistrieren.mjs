@@ -18,7 +18,7 @@ function btnMaNummerOK(){
         lbAusgabeMaNummer.innerText = "Hallo Rot"
         inputMaNummer.innerText = "Es soll die Mitarbeiter- Nummer eingegeben werden!";
         isMaNummerEingabeRichtig = false;
-        return isMaNummerEingabeRichtig;
+        return isMaNummerEingabeRichtig;//
     }
     else if(inputMaNummer.length>=0){
         lbAusgabeMaNummer.style.backgroundColor = "green";
