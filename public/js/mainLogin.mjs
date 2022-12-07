@@ -12,9 +12,25 @@ function myFunctionClicky(){
 
 // erst wenn existiert, kann man farbe machen
 document.addEventListener("DOMContentLoaded", function () {
-   // document.getElementById("lbAusgabeSpitzname1").style.fontSize = "24px";
-    //document.getElementById('lbAusgabeSpitzname1').style.backgroundColor="red";
+    document.getElementById("lbAusgabeSpitzname1").style.fontSize = "24px";
+    document.getElementById('lbAusgabeSpitzname1').style.backgroundColor="red";
 });
+
+function btnMaNummerLOK(){
+    let eingabeMaNummerL = document.getElementById("inputMaNummerL").value;
+    console.log("eingabeMaNummerL: "+eingabeMaNummerL);
+    lbAusgabeMaNummerLClient.innerText = eingabeMaNummerL;
+    lbAusgabeMaNummerLClient.style.color = "red";
+}
+
+function btnPasswortLOK(){
+    let eingabePasswortL = document.getElementById("inputPasswortL").value;
+    console.log("eingabePasswortL: "+eingabePasswortL);
+    let lbAusgabePasswortLClient = document.getElementById('lbAusgabePasswortLClient');
+    lbAusgabePasswortLClient.innerText = eingabePasswortL;
+    lbAusgabePasswortLClient.style.color = "red";
+}
+
 
 
 async function loadJoke() {

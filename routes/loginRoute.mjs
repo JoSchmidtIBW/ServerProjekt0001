@@ -77,6 +77,7 @@ function clicker() {
     // return myVar;
 };
 
+/*
 router.get("/l", (req, res) => {
 
     res.render('pages/login', {
@@ -86,7 +87,26 @@ router.get("/l", (req, res) => {
         xClicker: clicker()
     });
 });
+ */
+let maNummerL = "";
+let passwortL = "";
 
+router.get("/l", (req, res) => {
+
+    res.render('pages/login', {
+        myVar : myVar,
+        spitzname : spitzname,
+        spitzname2 : spitzname2,
+
+        maNummerL : maNummerL,
+        passwortL : passwortL,
+
+        xClicker: clicker()
+    });
+});
+
+
+/*
 router.post("/l", (req, res) => {
 
     spitzname = req.body.spitzname;
@@ -100,6 +120,25 @@ router.post("/l", (req, res) => {
         xClicker: clicker()
     });
 });
+*/
+
+router.post('/l', function(req, res){
+    spitzname = req.body.spitzname;
+    spitzname2 = req.body.spitzname2;
+    console.log("spitzname: "+spitzname);
+
+    //werIstAngemeldet12= req.body.werIstAngemeldetH;
+
+    maNummerL = req.body.maNummerL;
+    passwortL = req.body.passwortL;
+    console.log("passwortL: "+passwortL)
+    // Auth and validate here, then
+    // Set a flash message by passing the key, followed by the value, to req.flash().
+    //req.flash('success', 'Put anything here')
+    res.redirect('/api/inHome');
+});
+
+
 
 let computerSciencePortal = "GeeksforGeeks";
 
