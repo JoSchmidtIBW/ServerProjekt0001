@@ -17,10 +17,11 @@
     <!--<a class="aboutUS">by C.Tschenet / J.Schmidt</a>-->
     <div class="aboutUS">by C.Tschenet / J.Schmidt</div>
 
+    <div class="TestDiv">
     <br>
     <form action="/api/registrieren" method="post">
-        MaNummer: <input name="MaNummer" type="text" id="inputMaNummer"/>
-        <button type="button" id="btnMa_Nummer" onclick="btnMa_NummerOK()">OK</button><a id="lbAusgabeMaNummer"></a><button type="button" id="btnMaNummer2" onclick="btnMaNummerOK2()">OK</button><br>
+        MA_Nummer: <input name="MaNummer" type="text" id="inputMaNummer"/>
+        <button type="button" id="btnMaNummer" onclick="btnMaNummerOK()">OK</button><a id="lbAusgabeMaNummer"></a><br>
         Vorname: <input name="Vorname" type="text" />
         <br><a id="lbAusgabeVorname"></a>
         Nachname: <input name="Nachname" type="text" />
@@ -34,12 +35,9 @@
         <a id="lbAusgabeUserVerkaufMubea"><%= MaNummer %> , <%= Vorname %>, <%= Nachname %>, <%= Passwort_User %>, <%= IstChef %></a>
     </form>
     <br>
+</div>
 
     <button><a href="/api/login/l">go to Login</a></button>
-
-    <div class="calculate" id="calculate">
-            <div class="button" id="button" onclick="myCode(this.body)"> CALCULATE ! </div>
-        </div>
 
     <br>
     <br>
@@ -55,6 +53,8 @@
     </footer>
 
     <script type="text/javascript" src="/public/js/mainRegistrieren.mjs" ></script>
+   <!-- <script type="text/javascript" src="/public/js/mainRegistrieren.mjs" ></script>  -->
+    <!-- <script type="module" src="/public/js/mainRegistrieren.mjs" ></script> -->
 </body>
 
 </html>

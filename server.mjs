@@ -6,7 +6,7 @@ import dbPool from './lib/db.mjs';
 
 import loginRoutes from './routes/loginRoute.mjs'
 import registryRoutes from './routes/registryRoute.mjs'
-
+import inHomeRoutes from './routes/inHomeRoute.mjs'
 
 //const express = require('express')
 const app = express()
@@ -39,7 +39,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/api/login', loginRoutes);
 // all routes in here starting with /registrieren
 app.use('/api/registrieren', registryRoutes);
-
+app.use('/api/inHome', inHomeRoutes);
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
@@ -70,7 +70,7 @@ app.get('/d', async(req, res) => {
 });
 
 
-console.log("ich bin server.mjs");
+console.log("ich bin server.mjs");//
 
 
 export default function sum(a, b) {
