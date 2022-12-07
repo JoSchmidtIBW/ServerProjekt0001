@@ -3,6 +3,8 @@
 //Todo das hier wird wahrscheinlich der controller clientseitig sein
 // um von hier zb ein boolean an den server zu schicken, braucht es ein controller serverseitig
 // ausser, mann mach im main.js ein type="module".... dann geht aber dieses hier nicht
+//todo footer für registrieren und inhome, gleicher, wo steht wer ist angemeldet
+//registrieren sollte nur admin können 
 /*
 function btnMaNummerOK(){
     console.log("btnMaNummerOK wurde geklickt");
