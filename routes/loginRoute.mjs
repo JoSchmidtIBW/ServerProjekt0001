@@ -98,7 +98,7 @@ router.post('/l', async(req, res)=>{
 
     console.log("check- Ausgabe: "+ check(maNummerL,passwortL));
 
-    let isAuthentifiziert = check(maNummerL,passwortL);
+    let isAuthentifiziert = await check(maNummerL,passwortL);
     console.log("isAuthentifiziert: "+isAuthentifiziert);
 
     if(isAuthentifiziert===true){
@@ -344,10 +344,12 @@ async function check(maNummer, passwort){
 
     //console.log(dbObj.MA_Nummer);
 
-    if(maNummer==="a" && passwort==="q"){
+    if(maNummer==="70220" && passwort==="q"){
         isMaNummerPasswort = true;
+        console.log(isMaNummerPasswort)
     }else{
         isMaNummerPasswort= false;
+        console.log(isMaNummerPasswort)
     }
     return isMaNummerPasswort;
 }
