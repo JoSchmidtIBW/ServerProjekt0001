@@ -12,8 +12,8 @@ function myFunctionClicky(){
 
 // erst wenn existiert, kann man farbe machen
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("lbAusgabeSpitzname1").style.fontSize = "24px";
-    document.getElementById('lbAusgabeSpitzname1').style.backgroundColor="red";
+  //  document.getElementById("lbAusgabeSpitzname1").style.fontSize = "24px";
+  //  document.getElementById('lbAusgabeSpitzname1').style.backgroundColor="red";
 });
 
 function btnMaNummerLOK(){

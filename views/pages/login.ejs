@@ -24,52 +24,40 @@
 </head>
 
 <body>
-<h1>das ist login.ejs xxxxin <%= myVar %> views</h1>
+<h1>das ist login.ejs xxxxin  views</h1>
 
 <!-- <script type="application/json" src="mainLogin.mjs" defer></script> -->
 
 <!-- text/javascript -->
-<form action="/api/login/l" method="post">
-        First Name: <input name="firstName" type="text" /> <br />
-        Last Name: <input name="lastName" type="text" /> <br />
-        <input type="submit" value="Vorname bestätigen" />
-    </form>
-
+<h1>das ist login.ejs xxxxin  views</h1>
     <br>
-    <form action="/api/login/l" method="post">
-            spitzname: <input name="spitzname" type="text" />
-            <input type="submit" value="spitzname bestätigen" />
-            <a> der eingegebene Spitzname:   <%= spitzname %>   </a>
-    </form>
-    <br>
-    <form action="/api/login/l" method="post">
-            spitzname2: <input name="spitzname2" type="text" />
-            <input type="submit" value="spitzname2 bestätigen" />
-            <a> der eingegebene Spitzname2:   <%= spitzname2 %>   </a>
-    </form>
 
-
-<br>
-<form action="/api/login/l" method="post">
-        maNummerL: <input name="maNummerL" type="text" id="inputMaNummerL"/>
+    <form action="/api/login/l" method="post">
+        maNummerL: <input name="maNummerLEingabe" type="text" id="inputMaNummerL"/>
         <!-- <input type="submit" value="Ma-Nummer bestätigen" id="btnMaNummerL" onclick="btnMaNummerLOK()"/>  -->
         <button type="button" id="btnMaNummerL" onclick="btnMaNummerLOK()">OK</button>
         <a>Eingegebe Ma-Nummer: </a>
         <a id="lbAusgabeMaNummerLClient"></a>
-        <a id="lbAusgabeMaNummerLServer"><%= maNummerL %></a>
-</form>
-<br>
-<form action="/api/login/l" method="post">
-        passwortL: <input name="passwortL" type="text" id="inputPasswortL"/>
+        <a id="lbAusgabeMaNummerLServer"><%= maNummerLServer %></a>
+       <!-- <input type="submit" value="Passwort bestätigen"/> -->
+   <!-- </form>
+    <br>
+    <form action="/api/login/l" method="post"> -->
+        <br>
+        passwortL: <input name="passwortLEingabe" type="text" id="inputPasswortL"/>
         <button type="button" id="btnPasswortL" onclick="btnPasswortLOK()">OK</button>
         <a>Eingegebes Passwort: </a>
         <!-- <input type="submit" value="Passwort bestätigen" id="btnPasswortL" onclick="btnPasswortLOK()"/> -->
         <a id="lbAusgabePasswortLClient"></a>
-        <a id="lbAusgabePasswortLServer"><%= passwortL %></a>
+        <a id="lbAusgabePasswortLServer"><%= passwortLServer %></a>
         <br>
         <input type="submit" value="Passwort bestätigen"/>
-</form>
-<br>
+    </form>
+    <br>
+
+    <br>
+    <br>
+
     <input type="button" onclick="location.href='/api/registrieren';" value="Go to Registrieren" />
 
 <br>
