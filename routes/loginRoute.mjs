@@ -81,7 +81,7 @@ router.get("/l", (req, res) => {
 
 router.post('/l', async(req, res)=>{
     let isMa_NummerInDB = false;
-    let isPasswortUser = false;
+    let isPasswortUserInDB = false;
     console.log("bin Post -----------------------------------------------------")
     //werIstAngemeldet12= req.body.werIstAngemeldetH;
     maNummerL = req.body.maNummerLEingabe;
@@ -92,26 +92,49 @@ router.post('/l', async(req, res)=>{
 
     //console.log("check- MaNummer: "+ await checkMaNummer(maNummerL));
 
-    isMa_NummerInDB = await checkMaNummer(maNummerL,passwortL);
+    isMa_NummerInDB = await checkMaNummer(maNummerL);
     console.log("isMa_NummerInDB: "+isMa_NummerInDB);
 
-    if(isMa_NummerInDB===true){
+    isPasswortUserInDB = await checkPasswort(maNummerL,passwortL);//
+    console.log("isPasswortInDB: "+isPasswortUserInDB);
+
+    if(isMa_NummerInDB===true && isPasswortUserInDB===false){
+        erstelleUser(maNummerL);
         //res.redirect('/api/inHome');
         res.render('pages/login',{
             maNummerLServer : "MA_Nummer IN db GEFUNDEN :)",
-            passwortLServer : passwortL,
+            passwortLServer : "pw leer oder falsch",
             xClicker: clicker()
         });
-    }else{
+    }else if(isMa_NummerInDB===false&&isPasswortUserInDB===false){
         res.render('pages/login',{
             maNummerLServer : "MA_Nummer gibt es nicht in DB :(",
-            passwortLServer : passwortL,
+            passwortLServer : "pw ist falsch oder leer",
             xClicker: clicker()
         });
+    }else if(isMa_NummerInDB===true&&isPasswortUserInDB===false){
+        res.render('pages/login',{
+            maNummerLServer : "MA_Nummer gefunden :)",
+            passwortLServer : "Passwort ist falsch :(",
+            xClicker: clicker()
+        });
+    }else if(isMa_NummerInDB===true&&isPasswortUserInDB===true){
+        res.redirect('/api/inHome');
+        /*
+        res.render('pages/login',{
+            maNummerLServer : "MA_Nummer gefunden :)",
+            passwortLServer : "Passwort richtig :)",
+            xClicker: clicker()
+        });
+         */
     }
     //funktioniert
     //res.redirect('/api/inHome');
 });
+
+
+
+
 
 /*
   router.post('/l', async(req, res)=>{
@@ -140,6 +163,30 @@ router.post('/l', async(req, res)=>{
     //res.redirect('/api/inHome');
   });
   */
+
+async function sucheInDBmaNummerPasswort(maNummer,passwort){
+    console.log('bin sucheInDBmaNummerPasswort-Funktion, habe bekommen: '+maNummer+', '+passwort);
+
+    let conn;
+    try {
+        counterDB = counterDB + 1;
+        console.log("counterDBMaNummerPasswort: "+counterDB);
+        conn = await dbPool.getConnection();
+        //console.log("conn: "+conn);//[object object]
+        const rows = await conn.query(`SELECT * FROM userVerkaufMubea WHERE MA_Nummer=`+maNummer+` AND Passwort_User = '`+passwort+`';`);
+        //console.log("rows: "+rows);
+        const jsonS = JSON.stringify(rows);
+        console.log("sucheInDBmaNummerPasswort-Funktion-jsonS: "+jsonS)
+        //res.writeHead(200, { 'Content-Type': 'text/html' });
+        //res.send(jsonS);
+        return jsonS;
+    } catch (e) {
+        console.log("DB-Error, irgendwas ist passiert, weil connection limit auf 8??? max 150??? ")
+    }
+}
+
+
+
 let counterDB = 0;
 async function sucheInDBmaNummer(maNummer){
     console.log('bin sucheInDBmaNummer-Funktion, habe bekommen: '+maNummer);
@@ -162,7 +209,61 @@ async function sucheInDBmaNummer(maNummer){
     }
 }
 
+
+async function erstelleUser(maNummer){
+    console.log("Bin erstelle User")
+    let ausgabeDB = "";
+    ausgabeDB = await sucheInDBmaNummer(maNummer);
+    let u1 = new User();
+    u1.setMa_NummerU(splitDB_DBObj(ausgabeDB).MA_Nummer);
+    u1.setVornameU(splitDB_DBObj(ausgabeDB).Vorname);
+    u1.setNachnameU(splitDB_DBObj(ausgabeDB).Nachname);
+    u1.setPasswortU(splitDB_DBObj(ausgabeDB).Passwort_User);
+    u1.setIstChefU(splitDB_DBObj(ausgabeDB).IstChef);
+
+    console.log("U1--MaNummer:   "+ u1.getMa_NummerU())
+    console.log("U1--Vorname:   "+ u1.getVornameU())
+    console.log("U1--Nachname:   "+ u1.getNachnameU())
+    console.log("U1--Passwort:   "+ u1.getPasswortU())
+    console.log("U1--istChef:   "+ u1.getIstChefU())
+    return u1;
+}
+
 //todo wenn ma_nummer zweimal vorkommt????
+async function checkPasswort(maNummer,passwort){
+    console.log("bin checkPasswort-Funktion, habe bekommen: "+maNummer+', '+passwort);
+    let isPasswort = false;
+    let ausgabeDB = "";
+    ausgabeDB = await sucheInDBmaNummerPasswort(maNummer, passwort);//das geht nicht
+    console.log("ausgabeDB: Wenn Mehrmals???????: "+ausgabeDB)
+    if(ausgabeDB==='[]'||ausgabeDB===undefined){//wenn manummer mehrmals????
+        console.log("ausgabeDB ist leeeeer!!!! sowas existiert nicht in der DB!!");
+        console.log("Diese Passwort ist falsch!!!");
+        isPasswort= false;
+    }else{
+        console.log('AusgabeDB ist voll, hat was gefunden :)');
+        splitDB_DBObj(ausgabeDB);
+        /// console.log(splitDB_DBObj(ausgabeDB))
+        //let u1 = new User("x","x","x","x","x");
+        let u1 = new User();
+        u1.setMa_NummerU(splitDB_DBObj(ausgabeDB).MA_Nummer);
+        u1.setVornameU(splitDB_DBObj(ausgabeDB).Vorname);
+        u1.setNachnameU(splitDB_DBObj(ausgabeDB).Nachname);
+        u1.setPasswortU(splitDB_DBObj(ausgabeDB).Passwort_User);
+        u1.setIstChefU(splitDB_DBObj(ausgabeDB).IstChef);
+
+        console.log("U1-MaNummer:   "+ u1.getMa_NummerU())
+        console.log("U1-Vorname:   "+ u1.getVornameU())
+        console.log("U1-Nachname:   "+ u1.getNachnameU())
+        console.log("U1-Passwort:   "+ u1.getPasswortU())
+        console.log("U1-istChef:   "+ u1.getIstChefU())
+        //console.log("oo2: "+splitDB_DBObj(ausgabeDB).MA_Nummer)
+        isPasswort = true;
+    }
+    return isPasswort;
+}
+
+
 
 async function checkMaNummer(maNummer){
     console.log("bin checkMaNummer-Funktion, habe bekommen: "+maNummer);
@@ -179,6 +280,7 @@ async function checkMaNummer(maNummer){
         splitDB_DBObj(ausgabeDB);
         /// console.log(splitDB_DBObj(ausgabeDB))
         //let u1 = new User("x","x","x","x","x");
+        /*
         let u1 = new User();
         u1.setMa_NummerU(splitDB_DBObj(ausgabeDB).MA_Nummer);
         u1.setVornameU(splitDB_DBObj(ausgabeDB).Vorname);
@@ -186,12 +288,13 @@ async function checkMaNummer(maNummer){
         u1.setPasswortU(splitDB_DBObj(ausgabeDB).Passwort_User);
         u1.setIstChefU(splitDB_DBObj(ausgabeDB).IstChef);
 
-        console.log("oooooh:   "+ u1.getMa_NummerU())
-        console.log("oooooh:   "+ u1.getVornameU())
-        console.log("oooooh:   "+ u1.getNachnameU())
-        console.log("oooooh:   "+ u1.getPasswortU())
-        console.log("oooooh:   "+ u1.getIstChefU())
+        console.log("U1-MaNummer:   "+ u1.getMa_NummerU())
+        console.log("U1-Vorname:   "+ u1.getVornameU())
+        console.log("U1-Nachname:   "+ u1.getNachnameU())
+        console.log("U1-Passwort:   "+ u1.getPasswortU())
+        console.log("U1-istChef:   "+ u1.getIstChefU())
         //console.log("oo2: "+splitDB_DBObj(ausgabeDB).MA_Nummer)
+        */
         isMaNummer = true;
     }
     /*

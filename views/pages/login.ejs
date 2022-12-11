@@ -20,19 +20,23 @@
    <!-- <link href="/css/styleLogin.css" rel="stylesheet" type="text/css"> -->
 
    <script type="text/javascript" src="/public/js/mainLogin.mjs"></script>
+
+   <!-- zum Ausprobieren, ev löschen -->
+       <!-- the form awesome library is used to add icons to our form -->
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <title>Login-Verkauf_Mubea</title>
 </head>
 
 <body>
-<h1>das ist login.ejs xxxxin  views</h1>
 
-<!-- <script type="application/json" src="mainLogin.mjs" defer></script> -->
-
-<!-- text/javascript -->
 <h1>das ist login.ejs xxxxin  views</h1>
     <br>
 
     <form action="/api/login/l" method="post">
+                <label for="username">
+    					<!-- font awesome icon -->
+    					<i class="fas fa-user"></i>
+    				</label>
         maNummerL: <input name="maNummerLEingabe" type="text" id="inputMaNummerL"/>
         <!-- <input type="submit" value="Ma-Nummer bestätigen" id="btnMaNummerL" onclick="btnMaNummerLOK()"/>  -->
         <button type="button" id="btnMaNummerL" onclick="btnMaNummerLOK()">OK</button>
@@ -44,6 +48,9 @@
     <br>
     <form action="/api/login/l" method="post"> -->
         <br>
+            <label for="password">
+					<i class="fas fa-lock"></i>
+				</label>
         passwortL: <input name="passwortLEingabe" type="text" id="inputPasswortL"/>
         <button type="button" id="btnPasswortL" onclick="btnPasswortLOK()">OK</button>
         <a>Eingegebes Passwort: </a>
