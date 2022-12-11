@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from 'uuid'; //uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
 
 
-let users = [];
+let usersYoutube = [];
 
 
 export const getUsers = (req, res) => {
-    res.send(users);
+    res.send(usersYoutube);
 }
 
 
@@ -21,9 +21,9 @@ export const createUser = (req, res) => {
 
     const userWithId = {...user, id: uuidv4() };
 
-    //users.push(user);
-    //users.push(userWithId);
-    users.push({...user, id: uuidv4() }); //npm start
+    //usersYoutube.push(user);
+    //usersYoutube.push(userWithId);
+    usersYoutube.push({...user, id: uuidv4() }); //npm start
 
 
     //res.send('POST ROUTE REACHED');
@@ -35,7 +35,7 @@ export const getUser = (req, res) => {
 
     const { id } = req.params;
 
-    const foundUser = users.find((user) => user.id === id)
+    const foundUser = usersYoutube.find((user) => user.id === id)
 
     //res.send(req.params);
     res.send(foundUser);
@@ -50,7 +50,7 @@ export const deleteUser = (req, res) => {
     // john 123
     // jane 321
 
-    users = users.filter((user) => user.id !== id);
+    usersYoutube = usersYoutube.filter((user) => user.id !== id);
     res.send(`User with the ID ${id} deleted from the database`);
 }
 
@@ -61,7 +61,7 @@ export const updateUser = (req, res) => {
     //das kann verändert werden
     const { firstName, lastName, age } = req.body;
 
-    const user = users.find((user) => user.id === id);
+    const user = usersYoutube.find((user) => user.id === id);
 
     if (firstName) {
         user.firstName = firstName;

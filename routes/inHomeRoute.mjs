@@ -1,5 +1,7 @@
 import express from "express";
-
+import User from "../Controllers/UserInLoggt.mjs";
+import {erstelleUser} from "./loginRoute.mjs";
+import uuu11 from './loginRoute.mjs'
 
 const router = express.Router();
 
@@ -27,11 +29,18 @@ router.get('/',(req,res)=>{
 })
 */
 
-router.get('/', function(req, res){
+router.get('/', async(req, res)=>{
     console.log("bin im inHomeRoute.mjs")
-    // Get an array of flash messages by passing the key to req.flash()
+    //let a = await erstelleUser();
+    //console.log("a: "+a.getMa_NummerU())
+    //let user1 = new User().getMa_NummerU();
+    let user1 = new User();
+    //let user1 = uuu11;//
+    console.log("user1: "+user1.getMa_NummerU())
+   // // Get an array of flash messages by passing the key to req.flash()
     res.render('pages/inHome', {
-        werIstAngemeldetH:"kk"
+        //werIstAngemeldetH:user1.getMa_NummerU()
+        werIstAngemeldetH:""
     });
 });
 //messages: req.flash('success')
