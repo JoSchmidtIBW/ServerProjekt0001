@@ -130,6 +130,7 @@ router.post('/l', async(req, res)=>{
         //if(module) module.exports = {uuu11}; // On node.js, use exports
        // else if(window) window.foo = uuu11; // In browser, use window
        // else console.error('Unknown environment');
+        // man könnte den user in der URL anzeigen, und diesen auch von dort wieder nehmen...
         res.redirect('/api/inHome');//
         /*
         res.render('pages/login',{
