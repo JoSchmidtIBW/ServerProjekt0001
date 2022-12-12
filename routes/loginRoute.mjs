@@ -1,8 +1,9 @@
 import express from "express";
 import dbPool from "../lib/db.mjs";
+import User from '../Controllers/UserInLoggt.mjs';
 
 const router = express.Router();
-
+/*
 class User {
     constructor(ma_NummerU,vornameU,nachnameU,passwortU,istChefU) {
         this.ma_NummerU = ma_NummerU;
@@ -42,6 +43,7 @@ class User {
         this.istChefU = istChefU;
     }
 }
+ */
 
 //middleware
 
@@ -99,7 +101,7 @@ router.post('/l', async(req, res)=>{
     console.log("isPasswortInDB: "+isPasswortUserInDB);
 
     if(isMa_NummerInDB===true && isPasswortUserInDB===false){
-        erstelleUser(maNummerL);
+
         //res.redirect('/api/inHome');
         res.render('pages/login',{
             maNummerLServer : "MA_Nummer IN db GEFUNDEN :)",
@@ -119,7 +121,23 @@ router.post('/l', async(req, res)=>{
             xClicker: clicker()
         });
     }else if(isMa_NummerInDB===true&&isPasswortUserInDB===true){
-        res.redirect('/api/inHome');
+        let uuu11=await erstelleUser(maNummerL);
+        console.log("uuu11: "+uuu11.getMa_NummerU())
+        //module.exports= uuu11;
+        //export default uuu11.getMa_NummerU();
+        //export default uuu11;
+        //module.exports={uuu11}
+        //if(module) module.exports = {uuu11}; // On node.js, use exports
+       // else if(window) window.foo = uuu11; // In browser, use window
+       // else console.error('Unknown environment');
+        // man könnte den user in der URL anzeigen, und diesen auch von dort wieder nehmen...
+
+        /*
+        var query = new URLSearchParams();
+        query.append("KEY", "VALUE);
+        location.href = "http://site.com/page?" + query.toString();
+        */
+        res.redirect('/api/inHome/:'+maNummerL);//
         /*
         res.render('pages/login',{
             maNummerLServer : "MA_Nummer gefunden :)",
@@ -186,7 +204,7 @@ async function sucheInDBmaNummerPasswort(maNummer,passwort){
 }
 
 
-
+//todo getconnection problem!!!
 let counterDB = 0;
 async function sucheInDBmaNummer(maNummer){
     console.log('bin sucheInDBmaNummer-Funktion, habe bekommen: '+maNummer);
@@ -210,7 +228,7 @@ async function sucheInDBmaNummer(maNummer){
 }
 
 
-async function erstelleUser(maNummer){
+export async function erstelleUser(maNummer){
     console.log("Bin erstelle User")
     let ausgabeDB = "";
     ausgabeDB = await sucheInDBmaNummer(maNummer);
@@ -226,10 +244,11 @@ async function erstelleUser(maNummer){
     console.log("U1--Nachname:   "+ u1.getNachnameU())
     console.log("U1--Passwort:   "+ u1.getPasswortU())
     console.log("U1--istChef:   "+ u1.getIstChefU())
+    console.log("u1--"+u1)
     return u1;
 }
 
-//todo wenn ma_nummer zweimal vorkommt????
+//todo wenn ma_nummer zweimal vorkommt???? und getconnection-problem!!!!
 async function checkPasswort(maNummer,passwort){
     console.log("bin checkPasswort-Funktion, habe bekommen: "+maNummer+', '+passwort);
     let isPasswort = false;
@@ -245,6 +264,7 @@ async function checkPasswort(maNummer,passwort){
         splitDB_DBObj(ausgabeDB);
         /// console.log(splitDB_DBObj(ausgabeDB))
         //let u1 = new User("x","x","x","x","x");
+        /*
         let u1 = new User();
         u1.setMa_NummerU(splitDB_DBObj(ausgabeDB).MA_Nummer);
         u1.setVornameU(splitDB_DBObj(ausgabeDB).Vorname);
@@ -258,6 +278,8 @@ async function checkPasswort(maNummer,passwort){
         console.log("U1-Passwort:   "+ u1.getPasswortU())
         console.log("U1-istChef:   "+ u1.getIstChefU())
         //console.log("oo2: "+splitDB_DBObj(ausgabeDB).MA_Nummer)
+
+         */
         isPasswort = true;
     }
     return isPasswort;
