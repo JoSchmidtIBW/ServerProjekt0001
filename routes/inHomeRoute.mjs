@@ -37,9 +37,9 @@ router.get('/:maNummer', async(req, res)=>{
     console.log("myArr[1]: "+myArr[1]);
     //let user1 = new User(myArr[1])
 
-    let a = await erstelleUser(myArr[1]);//funktioniert :)
-    console.log("a: "+a.getMa_NummerU());
-    console.log("a: "+a.getNachnameU())
+    let user = await erstelleUser(myArr[1]);//funktioniert :)
+    console.log("a: "+user.getMa_NummerU());
+    console.log("a: "+user.getNachnameU())
     //let user1 = new User().getMa_NummerU();
     //let user1 = new User();
     //let user1 = uuu11;//
@@ -47,7 +47,7 @@ router.get('/:maNummer', async(req, res)=>{
    // // Get an array of flash messages by passing the key to req.flash()
     res.render('pages/inHome', {
         //werIstAngemeldetH:user1.getMa_NummerU()
-        werIstAngemeldetH:""
+        werIstAngemeldetH:user.getVornameU()+" "+user.getNachnameU()//
     });
 });
 //messages: req.flash('success')
