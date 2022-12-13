@@ -6,12 +6,17 @@
 MYSQL -u root -p
 password: .......
 
+pw admin:   123
+pw 70220:   1234
+pw 70223:   abcd
+pw 70225:   1
+
 
 DROP DATABASE mubeaVerkaufDataBase;
 CREATE DATABASE mubeaVerkaufDataBase;
 SHOW DATABASES;
 USE mubeaVerkaufDataBase;
- 
+
  
 CREATE TABLE IF NOT EXISTS userVerkaufMubea (
 ID_User int AUTO_INCREMENT,
@@ -22,21 +27,21 @@ Passwort_User VARCHAR(100),
 IstChef VARCHAR(100),
 PRIMARY KEY (ID_User)
 );
- 
+
  
 SHOW TABLES;
- 
+
 INSERT INTO userVerkaufMubea
 (MA_Nummer, Vorname, Nachname, Passwort_User, IstChef)
 VALUES 
-('0001','Admin','Administrator','123','Admin'),
-('70220','Hans','Meier','abcd','istChef'),
-('70223','Max','Mustermann','1234','keinChef'),
-('70225','Güööääuendogan','MééàèŕčTurc','1','keinChef');
- 
+('0001','Admin','Administrator','rTtGwkAwxI6ajLjBmMtZ3w==','Admin'),
+('70220','Hans','Meier','QsS4jOwHxRt7ztLW6rFOkw==','istChef'),
+('70223','Max','Mustermann','TKToMaJyQLLbXE0n7Bx2fQ==','keinChef'),
+('70225','Güööääuendogan','Mééàè??aeTurc','v9fOXIvcjOuJeDRAnY2+Mw==','keinChef');
+
  
 DESCRIBE userVerkaufMubea;
- 
+
 SELECT * FROM userVerkaufMubea;
 
 
@@ -51,6 +56,7 @@ VnameE VARCHAR(100),
 NnameE VARCHAR(100),
 DatumE VARCHAR(100),
 UhrzeitE VARCHAR(100),
+WunschDatum VARCHAR(100),
 Kunde VARCHAR(100),
 MengeTo VARCHAR(100),
 ArtikelAnLager VARCHAR(100),
@@ -65,8 +71,8 @@ SHOW TABLES;
 DESCRIBE versandListeMubea;
 
 INSERT INTO versandListeMubea
-(VnameE, NnameE, DatumE, UhrzeitE, Kunde, MengeTo, ArtikelAnLager,LSimLeitsystem, RTZ_KESIT, ArtikelNichtProd)
+(VnameE, NnameE, DatumE, UhrzeitE, WunschDatum, Kunde, MengeTo, ArtikelAnLager,LSimLeitsystem, RTZ_KESIT, ArtikelNichtProd)
 VALUES 
-('Stups','Stupsi','01.01.1999','11.23','Sexdus Stoxll DE-Doxgexrn','101.51','X','X','X','10181234'),
-('Frölein','Hilde','05.07.1985','23.01','Sexdoll Stoxll CH-Münsingen','20.62','X','','','1018883'),
-('Herbert','vonundzu','25.12.1956','15.34','SePPP xll CH-Förensee','0.62','','X','X','1018822');
+('Stups','Stupsi','01.01.1999','11.23','02.02.2022','Sexdus Stoxll DE-Doxgexrn','101.51','X','X','X','10181234'),
+('Frölein','Hilde','05.07.1985','23.01','03.03.2022','Sexdoll Stoxll CH-Münsingen','20.62','X','','','1018883'),
+('Herbert','vonundzu','25.12.1956','15.34','04.04.2022','SePPP xll CH-Förensee','0.62','','X','X','1018822');
