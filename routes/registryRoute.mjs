@@ -1,5 +1,7 @@
 import express from "express";
 import dbPool from "../lib/db.mjs";
+import CryptoJS from 'crypto-js';
+
 const router = express.Router();
 
 //middleware
@@ -43,6 +45,32 @@ router.post('/', async function (req, res) {
 
     console.log(maNummer+"uzhuhunhj")
 
+    let data="passwort_User";//Message to Encrypt
+    let iv  = CryptoJS.enc.Base64.parse("");//giving empty initialization vector
+//var key=CryptoJS.SHA256("Message");//hashing the key using SHA256
+    let key=CryptoJS.SHA256("mySecretKey1");//hashing the key using SHA256
+    var encryptedStringPasswort_User=encryptData(data,iv,key);//muss var sein
+    console.log("encryptedStringPasswort_User: "+encryptedStringPasswort_User);//genrated encryption String:  swBX2r1Av2tKpdN7CYisMg==
+
+    function encryptData(data,iv,key){
+        if(typeof data=="string"){
+            data=data.slice();
+            encryptedStringPasswort_User = CryptoJS.AES.encrypt(data, key, {
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
+            });
+        }
+        else{
+            encryptedStringPasswort_User = CryptoJS.AES.encrypt(JSON.stringify(data), key, {
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
+            });
+        }
+        return encryptedStringPasswort_User.toString();
+    }
+
     if(maNummer.length===0||vorname.length===0||nachname.length===0||passwort_User.length===0||istChef.length===0){
         res.render('pages/registrieren', {
             MaNummer: maNummer,
@@ -58,7 +86,7 @@ router.post('/', async function (req, res) {
             conn1 = await dbPool.getConnection();
             console.log(conn1 + "**************************"); //komt im console von vs code, aber nicht in konsole browser
             // todo prepared statment wegen sql injection
-            const res = await conn1.query("INSERT INTO userVerkaufMubea (MA_Nummer, Vorname, Nachname, Passwort_User, IstChef) VALUES ('"+maNummer+"','"+vorname+"','"+nachname+"','"+passwort_User+"','"+istChef+"');");
+            const res = await conn1.query("INSERT INTO userVerkaufMubea (MA_Nummer, Vorname, Nachname, Passwort_User, IstChef) VALUES ('"+maNummer+"','"+vorname+"','"+nachname+"','"+encryptedStringPasswort_User+"','"+istChef+"');");
             console.log(res);
 
         } catch (e) {}
