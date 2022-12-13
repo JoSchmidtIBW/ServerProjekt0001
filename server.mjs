@@ -1,6 +1,7 @@
 
 
 import express from "express";
+import CryptoJS from 'crypto-js';
 
 import dbPool from './lib/db.mjs';
 
@@ -12,6 +13,82 @@ import inHomeRoutes from './routes/inHomeRoute.mjs'
 const app = express()
 const port = 7080
 
+//---------------------------------------------------------------------------------
+//import CryptoJS from 'crypto-js';
+let cipherPasswortL = CryptoJS.AES.encrypt("1", 'secret key 123').toString();////macht immer neuen hash, möchte aber gleichen
+console.log("cipherPasswortL: "+cipherPasswortL)
+
+// Decrypt
+let bytes  = CryptoJS.AES.decrypt("U2FsdGVkX1+nJNyUfcMjzGmoApYQeogYR3oBzoCB19Q=", 'secret key 123');
+console.log("bytespasswortL: "+bytes)
+let originalText = bytes.toString(CryptoJS.enc.Utf8);
+
+console.log("originalTextpasswortL: "+originalText); // 'my message'
+//---------------------------------------------------------------------------------
+/*
+console.log("*******************")
+let hash = CryptoJS.SHA256("1");
+console.log("hash: "+hash)
+let originalText1 = hash.toString(CryptoJS.enc.Base64)
+console.log("originalTextpasswortL: "+originalText1);
+
+let encrypted = CryptoJS.AES.encrypt("1", "Secret Passphrase");
+console.log("encrypted: "+encrypted)
+//var decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+let decrypted = CryptoJS.AES.decrypt(encrypted, "Secret Passphrase");
+console.log("decrypted: "+decrypted)
+
+let encrypted1 = CryptoJS.DES.encrypt("1", "Secret Passphrase");
+console.log("encrypted1: "+encrypted1)
+let decrypted1 = CryptoJS.DES.decrypt(encrypted1, "Secret Passphrase");
+console.log("decrypted1: "+decrypted1)
+
+ */
+//-----------------------------------------------------//
+console.log("************************************************")
+var data="1234";//Message to Encrypt
+var iv  = CryptoJS.enc.Base64.parse("");//giving empty initialization vector
+//var key=CryptoJS.SHA256("Message");//hashing the key using SHA256
+var key=CryptoJS.SHA256("mySecretKey1");//hashing the key using SHA256
+var encryptedString=encryptData(data,iv,key);
+console.log("encryptedString: "+encryptedString);//genrated encryption String:  swBX2r1Av2tKpdN7CYisMg==
+
+function encryptData(data,iv,key){
+    if(typeof data=="string"){
+        data=data.slice();
+        encryptedString = CryptoJS.AES.encrypt(data, key, {
+            iv: iv,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.Pkcs7
+        });
+    }
+    else{
+        encryptedString = CryptoJS.AES.encrypt(JSON.stringify(data), key, {
+            iv: iv,
+            mode: CryptoJS.mode.CBC,
+            padding: CryptoJS.pad.Pkcs7
+        });
+    }
+    return encryptedString.toString();
+}
+
+//var iv  = CryptoJS.enc.Base64.parse("");
+//var key=CryptoJS.SHA256("Message");
+
+var decrypteddata=decryptData(encryptedString,iv,key);
+console.log("decrypteddata: "+decrypteddata);//genrated decryption string:  Example1
+
+function decryptData(encrypted,iv,key){
+    var decrypted = CryptoJS.AES.decrypt(encrypted, key, {
+        iv: iv,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+    });
+    return decrypted.toString(CryptoJS.enc.Utf8)
+}
+
+
+//**************************************************************
 
 //setup
 app.set("case sensitive routing", false); //um url gross oder klein schreiben link /users   /Users

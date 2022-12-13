@@ -1,6 +1,7 @@
 import express from "express";
 import dbPool from "../lib/db.mjs";
 import User from '../Controllers/UserInLoggt.mjs';
+import CryptoJS from 'crypto-js';
 
 const router = express.Router();
 /*
@@ -91,6 +92,20 @@ router.post('/l', async(req, res)=>{
     console.log("maaaaNummerL: "+maNummerL)
     passwortL = req.body.passwortLEingabe;
     console.log("paaaaasswortL: "+passwortL)
+
+    //---------------------------------------------------------------------------------
+//import CryptoJS from 'crypto-js';         erstellt jedesmal ein neuer hash
+    let cipherPasswortL = CryptoJS.AES.encrypt("1", 'secret key 123').toString();////
+    console.log("cipherPasswortL: "+cipherPasswortL)
+//problem: man kann ma-nummer suchen, objekt erstellen mit pw, wenn pw gleich decrypt dann gut
+    //aber mann möchte ma_nummer und pw suchen in db, was wenn es zwei gleiche ma_nummern hat
+// Decrypt
+    let bytes  = CryptoJS.AES.decrypt("U2FsdGVkX1+nJNyUfcMjzGmoApYQeogYR3oBzoCB19Q=", 'secret key 123');
+    console.log("bytespasswortL: "+bytes)
+    let originalText = bytes.toString(CryptoJS.enc.Utf8);
+
+    console.log("originalTextpasswortL: "+originalText); // 'my message'
+//---------------------------------------------------------------------------------
 
     //console.log("check- MaNummer: "+ await checkMaNummer(maNummerL));
 
