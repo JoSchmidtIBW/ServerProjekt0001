@@ -45,6 +45,7 @@ console.log("decrypted1: "+decrypted1)
 
  */
 //-----------------------------------------------------//
+/*
 console.log("************************************************")//
 let data="1234";//Message to Encrypt
 let iv  = CryptoJS.enc.Base64.parse("");//giving empty initialization vector
@@ -86,7 +87,7 @@ function decryptData(encrypted,iv,key){
     });
     return decrypted.toString(CryptoJS.enc.Utf8)
 }
-
+*/
 
 //**************************************************************
 
@@ -113,10 +114,10 @@ app.use(express.urlencoded({ extended: false }));
 
 
 // all routes in here starting with /login
-app.use('/api/login', loginRoutes);
+app.use('/api/v1/login', loginRoutes);
 // all routes in here starting with /registrieren
-app.use('/api/registrieren', registryRoutes);
-app.use('/api/inHome', inHomeRoutes);
+app.use('/api/v1/registrieren', registryRoutes);
+app.use('/api/v1/inHome', inHomeRoutes);
 
 app.get('/', (req, res) => {
     res.send('Hello World!')

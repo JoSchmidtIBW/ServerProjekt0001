@@ -193,7 +193,7 @@ router.post('/l', async(req, res)=>{
         query.append("KEY", "VALUE);
         location.href = "http://site.com/page?" + query.toString();
         */
-        res.redirect('/api/inHome/:'+maNummerL);//
+        res.redirect('/api/v1/inHome/:'+maNummerL);//
         /*
         res.render('pages/login',{
             maNummerLServer : "MA_Nummer gefunden :)",
