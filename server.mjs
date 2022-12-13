@@ -45,12 +45,12 @@ console.log("decrypted1: "+decrypted1)
 
  */
 //-----------------------------------------------------//
-console.log("************************************************")
-var data="1234";//Message to Encrypt
-var iv  = CryptoJS.enc.Base64.parse("");//giving empty initialization vector
+console.log("************************************************")//
+let data="1234";//Message to Encrypt
+let iv  = CryptoJS.enc.Base64.parse("");//giving empty initialization vector
 //var key=CryptoJS.SHA256("Message");//hashing the key using SHA256
-var key=CryptoJS.SHA256("mySecretKey1");//hashing the key using SHA256
-var encryptedString=encryptData(data,iv,key);
+let key=CryptoJS.SHA256("mySecretKey1");//hashing the key using SHA256
+var encryptedString=encryptData(data,iv,key);//muss var sein
 console.log("encryptedString: "+encryptedString);//genrated encryption String:  swBX2r1Av2tKpdN7CYisMg==
 
 function encryptData(data,iv,key){
@@ -75,11 +75,11 @@ function encryptData(data,iv,key){
 //var iv  = CryptoJS.enc.Base64.parse("");
 //var key=CryptoJS.SHA256("Message");
 
-var decrypteddata=decryptData(encryptedString,iv,key);
+let decrypteddata=decryptData(encryptedString,iv,key);
 console.log("decrypteddata: "+decrypteddata);//genrated decryption string:  Example1
 
 function decryptData(encrypted,iv,key){
-    var decrypted = CryptoJS.AES.decrypt(encrypted, key, {
+    let decrypted = CryptoJS.AES.decrypt(encrypted, key, {
         iv: iv,
         mode: CryptoJS.mode.CBC,
         padding: CryptoJS.pad.Pkcs7

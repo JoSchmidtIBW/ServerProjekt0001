@@ -6,6 +6,11 @@
 MYSQL -u root -p
 password: .......
 
+pw admin:   123
+pw 70220:   1234
+pw 70223:   abcd
+pw 70225:   1
+
 
 DROP DATABASE mubeaVerkaufDataBase;
 CREATE DATABASE mubeaVerkaufDataBase;
