@@ -138,3 +138,5 @@ PRIMARY KEY (id)
 SHOW TABLES;
 DESCRIBE author;
 DESCRIBE book;
+
+#  https://www.youtube.com/watch?v=rFssfx37UJw
