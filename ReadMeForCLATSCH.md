@@ -182,3 +182,49 @@ SELECT * FROM transactions, customers;
 
 UPDATE customers SET first_name = 'Hansoo' WHERE customer_id=1;
 SELECT * FROM transactions, customers;
+
+
+#----------------------------------------.
+#  https://www.youtube.com/watch?v=rFssfx37UJw
+DROP DATABASE mubeaVerkauf2DataBase;
+CREATE DATABASE mubeaVerkauf2DataBase;
+SHOW DATABASES;
+USE mubeaVerkauf2DataBase;
+
+CREATE TABLE customers (
+customer_id INT PRIMARY KEY AUTO_INCREMENT,
+first_name VARCHAR(50),
+last_name VARCHAR(50)
+);
+
+INSERT INTO customers (first_name, last_name)
+VALUES  
+("Fred", "Fish"),
+("Larry", "Lobster"),
+("Bubble", "Bass");
+
+SELECT * FROM customers;
+
+
+
+# Add a named foreign key constraint to a new table
+
+CREATE TABLE transactions (
+transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+amount DECIMAL(5, 2),
+customer_idT INT,
+FOREIGN KEY (customer_idT) REFERENCES customers(customer_id)
+);
+
+INSERT INTO transactions(amount, customer_idT)
+VALUES (4.99, 3),
+(2.89, 2),
+(3.38, 3),
+(4.99, 1);
+
+SELECT * FROM transactions;
+
+SELECT * FROM transactions, customers;
+
+UPDATE customers SET first_name = 'Hansoo' WHERE customer_id=1;
+SELECT * FROM transactions, customers;
