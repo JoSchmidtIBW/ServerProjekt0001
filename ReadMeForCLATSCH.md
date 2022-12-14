@@ -43,8 +43,34 @@ DESCRIBE userVerkaufMubea;
 #SELECT * FROM userVerkaufMubea;
 
 #------------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------------
+DROP TABLE kundeMubea;
 
+CREATE TABLE IF NOT EXISTS kundeMubea (
+ID_K int AUTO_INCREMENT,
+ErfasstK VARCHAR(100),
+KundeK VARCHAR(100) NOT NULL,
+KundenNummer VARCHAR(100) DEFAULT 'open',
+OrtK VARCHAR(100),
+AdresseK VARCHAR(100),
+LandK VARCHAR(100),
+#FOREIGN KEY(KundeK) REFERENCES versandListeMubea(KundeV),
+#FOREIGN KEY (ID_K) REFERENCES versandListeMubea (KundeK),
+#FOREIGN KEY (ID_K) REFERENCES versandListeMubea (ID_E),
+PRIMARY KEY (ID_K)
+);
 
+SHOW TABLES;
+
+DESCRIBE kundeMubea;
+
+INSERT INTO kundeMubea
+(ErfasstK, KundeK, KundenNummer, OrtK, AdresseK, LandK)
+VALUES
+('01.01.1980','Kunde A','0123456789','Chur','Rabengasse 2','Schweiz'),
+('02.01.1980','Kunde B','0103124545','Arbon','Rebenstrasse 3','Schweiz'),
+('03.01.1980','Kunde C','9876543210','Valsot','Banhofstrasse 34','Österreich');
+#------------------------------------------------------------------------------------------------
 
 DROP TABLE versandListeMubea;
 
@@ -62,6 +88,7 @@ LSimLeitsystem VARCHAR(100),
 R_K VARCHAR(100),
 ArtikelNichtProd VARCHAR(100)  DEFAULT 'open',
 #FOREIGN KEY(KundeV) REFERENCES kundeMubea(KundeK),
+FOREIGN KEY(ID_E) REFERENCES kundeMubea(ID_K),
 PRIMARY KEY (ID_E)
 );
 
@@ -77,34 +104,14 @@ VALUES
 ('Herbert','vonundzu','25.12.1956','15.34','04.04.2022','Kunde C','0.62','','X','X','1018822');
 
 #SELECT * FROM versandListeMubea;
-#------------------------------------------------------------------------------------------------
-DROP TABLE kundeMubea;
 
-CREATE TABLE IF NOT EXISTS kundeMubea (
-ID_K int AUTO_INCREMENT,
-ErfasstK VARCHAR(100),
-KundeK VARCHAR(100) NOT NULL,
-KundenNummer VARCHAR(100) DEFAULT 'open',
-OrtK VARCHAR(100),
-AdresseK VARCHAR(100),
-LandK VARCHAR(100),
-#FOREIGN KEY(KundeK) REFERENCES versandListeMubea(KundeV),
-FOREIGN KEY (ID_K) REFERENCES versandListeMubea (ID_E),
-PRIMARY KEY (ID_K)
-);
-
+#--------------------------------------------------------------------------------------------
 SHOW TABLES;
 
-DESCRIBE kundeMubea;
-
-INSERT INTO kundeMubea
-(ErfasstK, KundeK, KundenNummer, OrtK, AdresseK, LandK)
-VALUES
-('01.01.1980','Kunde A','0123456789','Chur','Rabengasse 2','Schweiz'),
-('02.01.1980','Kunde B','0103124545','Arbon','Rebenstrasse 3','Schweiz'),
-('03.01.1980','Kunde C','9876543210','Valsot','Banhofstrasse 34','Österreich');
-
-SHOW TABLES;
+SELECT * FROM kundeMubea;
+UPDATE kundeMubea SET KundeK ='Firma Brosch' WHERE ID_K=1;
+SELECT * FROM kundeMubea;
+SELECT * FROM versandlisteMubea;
 #--------------------------------------------------------------------------------------------
 #---------------------***************************+funktioniert
 DROP DATABASE mubeaVerkauf1DataBase;
