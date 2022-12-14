@@ -13,6 +13,7 @@ Frameworks:
 `npm install ejs`  weil man da auch antworten vom server schreiben kann, im html
 // ev socket io oder websocketio für antworten von server und client
 `npm i nodemon` damit beim Entwickeln der Server nicht immer neugestartet werden muss
+`npm i crypto-js` für pw verschlüsseln
 // ev helmet installieren
 // ev fetch... für juck norris witz
 

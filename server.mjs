@@ -46,7 +46,7 @@ console.log("decrypted1: "+decrypted1)
  */
 //-----------------------------------------------------//
 /*
-console.log("************************************************")//
+console.log("************************************************")//funktioniert
 let data="1234";//Message to Encrypt
 let iv  = CryptoJS.enc.Base64.parse("");//giving empty initialization vector
 //var key=CryptoJS.SHA256("Message");//hashing the key using SHA256
