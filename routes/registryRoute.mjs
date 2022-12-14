@@ -45,7 +45,7 @@ router.post('/', async function (req, res) {
 
     console.log(maNummer+"uzhuhunhj")
 //todo key auslagern, frage, wohin?????
-    let data="passwort_User";//Message to Encrypt
+    let data=passwort_User;//Message to Encrypt
     let iv  = CryptoJS.enc.Base64.parse("");//giving empty initialization vector
 //var key=CryptoJS.SHA256("Message");//hashing the key using SHA256
     let key=CryptoJS.SHA256("mySecretKey1");//hashing the key using SHA256
