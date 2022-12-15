@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link type="text/css" rel="stylesheet" href="/public/css/styleInHome.css" media="all">
+    <!-- <link type="text/css" rel="stylesheet" href="/public/css/styleInHome.css" media="all"> -->
+    <link type="text/css" rel="stylesheet" href="/css/styleInHome.css" media="all">
 
-    <title>Login-Verkauf_Mubea</title>
+    <title>Home</title>
 </head>
 
 <body>
@@ -20,6 +21,15 @@
             <button>Hallo Admin</button>
             <input type="button" onclick="location.href='/api/v1/registrieren';" value="Go to Registrieren Admin" />
         <% } %>
+
+
+        <h2>Achtung !!! Kunde schreiben "1" , "2" oder "3"</h2>
+
+       <!-- <input type="button" onclick="location.href='/api/v1/inHome/passwordChange';" value="Passwort Ändern" /> -->
+       <!-- nicht der Button öffnet neuen Link, sondern gibt ein boolean retour, welcher dan ein Post mit redirekt macht -->
+       <form action="" method="post">
+
+        </form>
 
         <form action="" method="post">
     <!-- <form action="/api/inHome/:"+MaNummerServer  method="post"> -->
@@ -37,7 +47,6 @@
     <br>
 
     <input type="button" onclick="location.href='/api/v1/login/l';" value="logOut" />
-
 </body>
 
 </html>
