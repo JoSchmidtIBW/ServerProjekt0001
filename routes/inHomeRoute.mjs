@@ -129,7 +129,7 @@ async function schreibeKundeInDB(user, kundeIHServerEingabe){
         conn1 = await dbPool.getConnection();
         console.log(conn1 + "**************************"); //komt im console von vs code, aber nicht in konsole browser
         // todo prepared statment wegen sql injection
-        const res = await conn1.query("INSERT INTO versandlisteMubea (VnameE, NnameE, DatumE, UhrzeitE, Kunde) VALUES ('"+user.getVornameU()+"','"+user.getNachnameU()+"','"+heutigesDatum+"','"+zeitJetzt+"','"+kundeIHServerEingabe+"');");
+        const res = await conn1.query("INSERT INTO versandlisteMubea (VnameE, NnameE, DatumE, UhrzeitE, ID_KV) VALUES ('"+user.getVornameU()+"','"+user.getNachnameU()+"','"+heutigesDatum+"','"+zeitJetzt+"','"+kundeIHServerEingabe+"');");
         console.log(res);
 
     } catch (e) {}
