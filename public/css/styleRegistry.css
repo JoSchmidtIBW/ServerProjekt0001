@@ -34,6 +34,12 @@ body {
     margin-left: 10px;
     letter-spacing: -1px;
 }
+/*Kann mann löschen*/
+.testDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .footer-Registriere {
     color: #696969;
@@ -43,6 +49,7 @@ body {
     border-width: 1px;
     background-color: lightgray;
     font-family: 'Khand';
+    font-family: TheSansC5-5,sans-serif;
     font-size: 11px;
     /*damit foot immer ganz unten, geht auch mit flex*/
     position: absolute;
@@ -61,3 +68,4 @@ body {
 .pDateFooter {
     margin-right: 20px;
 }
+

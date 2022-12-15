@@ -97,7 +97,31 @@ app.set("view engine", "ejs");
 
 //middleware
 //app.use(express.static('public')); //der public ordner wird als pfad genommen
-app.use("/public", express.static('public'))
+//app.use("/public", express.static('public'))
+//app.use(express.static('public')); //der public ordner wird als pfad genommen
+//app.use('./public/', express.static('./public'));
+//app.use('/public/', express.static('./public'));//grün kein bild
+//app.use('public', express.static('public'));//grün kein bild
+//app.use('/public', express.static('public'));//grün kein bild
+//app.use('/public/', express.static('public'));//grün kein bild
+//app.use('/public/', express.static('./public'));//grün kein bild
+//app.use( express.static( "./public/" ) ); //grün und bild und rosa/////////////////////////////// der geht einmal
+//app.use('/public', express.static( "./public" ) ); //grün rosa kein bild
+//app.use(express.static( "public" ) ); //grün rosa kein bild
+//app.use( express.static( "./public/" ) );
+//app.use('/public', express.static('public'));// grün rosa. kein bild
+//app.use('/public', express.static('./public'));//grün rosa kein bild
+//app.use('./public', express.static('./public'));//nichts
+
+//app.use('/public', express.static(path.join(__dirname, 'public')))
+////app.use('/static', express.static('public'))
+//app.use(express.static("public"));
+
+//app.use(express.static(__dirname + '/public'));
+//app.use(express.static(__dirname + '/public'));
+
+
+
 //app.use(express.static("public"));
 //app.use('/public', express.static('public'));
 //app.use(express.static(__dirname + '/public'));
@@ -118,6 +142,18 @@ app.use('/api/v1/login', loginRoutes);
 // all routes in here starting with /registrieren
 app.use('/api/v1/registrieren', registryRoutes);
 app.use('/api/v1/inHome', inHomeRoutes);
+
+
+//app.use('./public/', express.static( "./public/" ) );
+//app.use('/public',express.static( "./public" ) );
+
+app.use( express.static( "./public" ) ); //grün und bild und rosa/////////////////////////////// der geht einmal
+//app.use('/public', express.static( "./public" ) ); //grün rosa kein bild
+
+
+
+
+
 
 app.get('/', (req, res) => {
     res.send('Hello World!')

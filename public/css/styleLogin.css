@@ -1,3 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300&family=Khand:wght@500&family=Poppins:ital,wght@1,200&display=swap');
+/* 
+font-family: 'Hanken Grotesk', sans-serif;
+font-family: 'Khand', sans-serif;
+font-family: 'Poppins', sans-serif;
+*/
+
+/*------------------------------------------------------------------------------------------------------
+
+   *{            /*standartwerte resetten, auf allen Elemente 0, ist rand, 8px standart, von header*/
+/*       margin: 0;                   /*rand zwischen header und seite*/
+/*       padding: 0;                  /*damit kein andere Browser was macht*/
+/*       box-sizing: border-box;      /*standart setzen*/
+/*    }
+
+/*------------------------------------------------------------------------------------------------------*/
+
+
+body {
+    font-family: 'Khand', sans-serif;
+    margin: 0%;
+}
+
+header {
+    /*width: -20px;*/
+    margin: 10px;
+}
+
+main {
+    background-image: url('https://www.w3docs.com/uploads/media/default/0001/01/477719675fecaac0362957c214fb9aa56fca99b5.jpeg');
+    background-image: url('/images/rohre_ersatz.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+
+    font-family: 'Hanken Grotesk', sans-serif;
+    margin: 0px;
+}
+
+/*
+.MubeaLogo{
+    background-image: url('./images/Mubea_Logo_white_without_transparent.gif');
+    background-color: rgb(239, 234, 245);
+    max-width: 17.75rem;
+    color: #004b95;
+}
+*/
+.logo {
+
+}
+.MubeaTrack{
+    color: #c8ed10;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.stage__content-container {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 66%;/*
+}
+    .stage__content-container {*/
+    padding: 1.25rem 2.5rem 0 calc(14% + 2.5rem);
+    padding-top: 1.25rem;
+    padding-right: 2.5rem;
+    padding-bottom: 0px;
+    padding-left: calc(14% + 2.5rem);
+    padding-top: 0;/*
+}
+.stage__content-container {*/
+    /*-webkit-transform: skew(-18deg) translate(-118%);*/
+    transform: skew(-18deg) translate(-118%);
+    /*
+}
+
+.stage__content-container {*/
+    /* background: -webkit-gradient(linear,left top,left bottom,color-stop(20%,#004b95),to(rgba(0,75,149,.5)));*/
+    background: linear-gradient(180deg,#004b95 20%,rgba(0,75,149,.5));
+    padding: 2.8125rem 2.5rem 0 calc(14% + 2.5rem);
+    /*-webkit-box-align: center;
+    -ms-flex-align: center;*/
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 0;
+}
+
+/*
+.prallax {
+    min-height: 100vh;
+    background-image: href'/ServerProjekt0001-develop_branch15/public/images/rohre_ersatz.jpg' no-repeat center fixed;
+    background-size: cover;
+    background-color: rgb(177, 179, 179);
+}*/
+
 h1 {
-    background-color: blue;
+    /*background-color: rgb(235, 188, 232);*/
+    background: linear-gradient(180deg,#004b95 20%,rgba(0,75,149,.5));
+    margin: 0%;
+}
+
+
+
+.footer-Login {
+    color: #696969;
+    border-style: solid;
+    border-color: silver darkgray darkgray darkgray;
+    border-top-left-radius: 0.4em;
+    border-width: 1px;
+    background-color: lightgray;
+    font-family: 'Khand';
+    font-size: 11px;
+    /*damit foot immer ganz unten, geht auch mit flex*/
+    position: absolute;
+    bottom: 0;
+    width: 99.5%;
+    margin-left: 1px;
+    /*margin-top: 100px;*/
+    /*margin-bottom: 10px;*/
+    padding: 10px;
+}
+
+.pCopyRFooterLogin {
+    margin-left: 10px;
+}
+
+.pDateFooterLogin {
+    margin-right: 20px;
 }
