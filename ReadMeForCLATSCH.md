@@ -263,5 +263,6 @@ VALUES (24, 'hans', 'deen',1),
 SELECT * FROM customers;
 SELECT * FROM city;
 SELECT customers.id, customers.fname, customers.lname, city.cityname FROM customers INNER JOIN city ON city.c_id=customers.city;
+#funktioniert mit inner Join, nun kann man sich virstellen, wie die DB ausschauen soll...
 #SELECT * FROM customers, city;
 #SELECT cityname,id,fname from city, customers;
