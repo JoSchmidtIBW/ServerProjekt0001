@@ -10,7 +10,7 @@ let maNummer = "";
 let vorname = "";
 let nachname = "";
 let passwort_User = "";
-let istChef = "";
+let rolleUser = "";
 
 // http://localhost:7080/api/registrieren
 router.get("/", (req, res) => { // pfad, der alles entgegennimmt
@@ -24,7 +24,7 @@ router.get("/", (req, res) => { // pfad, der alles entgegennimmt
         Vorname: vorname,
         Nachname: nachname,
         Passwort_User: passwort_User,
-        IstChef: istChef,
+        RolleUser: rolleUser,
     }); //login.ejs
     //end
 });
@@ -41,7 +41,7 @@ router.post('/', async function (req, res) {
     vorname = req.body.Vorname;
     nachname = req.body.Nachname;
     passwort_User = req.body.Passwort_User;
-    istChef = req.body.IstChef;
+    rolleUser = req.body.rolleUser;
 
     console.log(maNummer+"uzhuhunhj")
 //todo key auslagern, frage, wohin?????
@@ -71,22 +71,39 @@ router.post('/', async function (req, res) {
         return encryptedStringPasswort_User.toString();
     }
 
-    if(maNummer.length===0||vorname.length===0||nachname.length===0||passwort_User.length===0||istChef.length===0){
+    if(maNummer.length===0||vorname.length===0||nachname.length===0||passwort_User.length===0||rolleUser.length===0){
         res.render('pages/registrieren', {
             MaNummer: maNummer,
             Vorname: vorname,
             Nachname: nachname,
             Passwort_User: passwort_User,
-            IstChef: istChef,
+            RolleUser: rolleUser,
         });
     }else{
+
+        let today = new Date();
+        let tag = today.getDate();
+        let monat = today.getMonth() + 1;
+        let jahr = today.getFullYear();
+
+        let heutigesDatum = tag + "." + monat + "." + jahr;
+        console.log("heutigesDatum: "+heutigesDatum);
+
+        //let time = new Date();
+        let stunden = today.getHours();
+        let minuten = today.getMinutes();
+        let sekunden = today.getSeconds();
+
+        let zeitJetzt = stunden + ":" + minuten;// + ":" + sekunden;
+        console.log("zeitJetzt: "+zeitJetzt);
+
         let conn1;
         try {
             //conn = await pool.getConnection();
             conn1 = await dbPool.getConnection();
             console.log(conn1 + "**************************"); //komt im console von vs code, aber nicht in konsole browser
             // todo prepared statment wegen sql injection
-            const res = await conn1.query("INSERT INTO userVerkaufMubea (MA_Nummer, Vorname, Nachname, Passwort_User, IstChef) VALUES ('"+maNummer+"','"+vorname+"','"+nachname+"','"+encryptedStringPasswort_User+"','"+istChef+"');");
+            const res = await conn1.query("INSERT INTO userVerkaufMubea (Erfasst_D_U, Erfasst_Z_U, MA_Nummer, Vorname, Nachname, Passwort_User, RolleUser) VALUES ('"+heutigesDatum +"','"+ zeitJetzt +"','"+maNummer+"','"+vorname+"','"+nachname+"','"+encryptedStringPasswort_User+"','"+rolleUser+"');");
             console.log(res);
 
         } catch (e) {}
@@ -96,7 +113,7 @@ router.post('/', async function (req, res) {
             Vorname: vorname,
             Nachname: nachname,
             Passwort_User: passwort_User,
-            IstChef: istChef,
+            RolleUser: rolleUser,
         });
     }
 });

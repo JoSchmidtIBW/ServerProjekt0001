@@ -19,7 +19,7 @@
     <div class="aboutUS">by C.Tschenet / J.Schmidt</div>
 
     <div class="TestDiv">
-    <h2>ACHTUNG, Hier muss erst der SQL befehl angepasst werden !!!!</h2>
+    <h2>-</h2>
     <br>
     <form action="/api/v1/registrieren" method="post">
         MA_Nummer: <input name="MaNummer" type="text" id="inputMaNummer"/>
@@ -30,11 +30,11 @@
         <br><a id="lbAusgabeNachname"></a>
         Passwort_User: <input name="Passwort_User" type="text" />
         <br><a id="lbAusgabePasswort_User"></a>
-        IstChef: <input name="IstChef" type="text" />
-        <br><a id="lbAusgabeIstChef"></a>
+        RolleUser: <input name="rolleUser" type="text" />
+        <br><a id="lbAusgabeRolleUser"></a>
         <input type="submit" value="alles bestätigen" />
         <a>UserVerkaufMubea:   </a>
-        <a id="lbAusgabeUserVerkaufMubea"><%= MaNummer %> , <%= Vorname %>, <%= Nachname %>, <%= Passwort_User %>, <%= IstChef %></a>
+        <a id="lbAusgabeUserVerkaufMubea"><%= MaNummer %> , <%= Vorname %>, <%= Nachname %>, <%= Passwort_User %>, <%= RolleUser %></a>
     </form>
     <br>
 </div>

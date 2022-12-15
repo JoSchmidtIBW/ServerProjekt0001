@@ -20,7 +20,8 @@ USE mubeaVerkaufDataBase;
  
 CREATE TABLE IF NOT EXISTS userVerkaufMubea (
 ID_User int AUTO_INCREMENT,
-ErfasstU VARCHAR(100),
+Erfasst_D_U VARCHAR(100),
+Erfasst_Z_U VARCHAR(100),
 MA_Nummer VARCHAR(100),
 Vorname varchar(100),
 Nachname VARCHAR(100),
@@ -32,12 +33,12 @@ PRIMARY KEY (ID_User)
 SHOW TABLES;
 
 INSERT INTO userVerkaufMubea
-(ErfasstU, MA_Nummer, Vorname, Nachname, Passwort_User, RolleUser)
+(Erfasst_D_U, Erfasst_Z_U, MA_Nummer, Vorname, Nachname, Passwort_User, RolleUser)
 VALUES 
-('01.01.1970','0001','Admin','Administrator','rTtGwkAwxI6ajLjBmMtZ3w==','Admin'),
-('02.01.1970','70220','Hans','Meier','QsS4jOwHxRt7ztLW6rFOkw==','Chef'),
-('03.01.1970','70223','Max','Mustermann','TKToMaJyQLLbXE0n7Bx2fQ==','Mitarbeiter'),
-('04.01.1970','70225','Güööääuendogan','MééàèaeTurc','v9fOXIvcjOuJeDRAnY2+Mw==','Mitarbeiter');
+('01.01.1970','09.21','0001','Admin','Administrator','rTtGwkAwxI6ajLjBmMtZ3w==','Admin'),
+('02.01.1970','09.22','70220','Hans','Meier','QsS4jOwHxRt7ztLW6rFOkw==','Chef'),
+('03.01.1970','09.23','70223','Max','Mustermann','TKToMaJyQLLbXE0n7Bx2fQ==','Mitarbeiter'),
+('04.01.1970','09.24','70225','Güööääuendogan','MééàèaeTurc','v9fOXIvcjOuJeDRAnY2+Mw==','Mitarbeiter');
 
 DESCRIBE userVerkaufMubea;
 #SELECT * FROM userVerkaufMubea;
