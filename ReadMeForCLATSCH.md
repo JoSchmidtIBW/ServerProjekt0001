@@ -57,6 +57,7 @@ LandK VARCHAR(100),
 #FOREIGN KEY(KundeK) REFERENCES versandListeMubea(KundeV),
 #FOREIGN KEY (ID_K) REFERENCES versandListeMubea (KundeK),
 #FOREIGN KEY (ID_K) REFERENCES versandListeMubea (ID_E),
+#Foreign KEY (ID_K) REFERENCES versandListeMubea(ID_KV)
 PRIMARY KEY (ID_K)
 );
 
@@ -75,20 +76,22 @@ VALUES
 DROP TABLE versandListeMubea;
 
 CREATE TABLE IF NOT EXISTS versandListeMubea (
-ID_E int AUTO_INCREMENT,
+ID_E int NOT NULL AUTO_INCREMENT,
 VnameE VARCHAR(100),
 NnameE VARCHAR(100),
 DatumE VARCHAR(100),
 UhrzeitE VARCHAR(100),
 WunschDatum VARCHAR(100),
-KundeV VARCHAR(100) NOT NULL,
+#KundeV VARCHAR(100) NOT NULL,
+ID_KV int NOT NULL,
 MengeTo VARCHAR(100),
 ArtikelAnLager VARCHAR(100),
 LSimLeitsystem VARCHAR(100),
 R_K VARCHAR(100),
 ArtikelNichtProd VARCHAR(100)  DEFAULT 'open',
 #FOREIGN KEY(KundeV) REFERENCES kundeMubea(KundeK),
-FOREIGN KEY(ID_E) REFERENCES kundeMubea(ID_K),
+#FOREIGN KEY(ID_E) REFERENCES kundeMubea(ID_K),
+FOREIGN KEY(ID_KV) REFERENCES kundeMubea(ID_K),
 PRIMARY KEY (ID_E)
 );
 
@@ -97,11 +100,11 @@ SHOW TABLES;
 DESCRIBE versandListeMubea;
 
 INSERT INTO versandListeMubea
-(VnameE, NnameE, DatumE, UhrzeitE, WunschDatum, KundeV, MengeTo, ArtikelAnLager,LSimLeitsystem, R_K, ArtikelNichtProd)
+(VnameE, NnameE, DatumE, UhrzeitE, WunschDatum, ID_KV, MengeTo, ArtikelAnLager,LSimLeitsystem, R_K, ArtikelNichtProd)
 VALUES
-('Maxli','SeppäToni','01.01.1999','11.23','02.02.2022','Kunde A','101.51','X','X','X','10181234'),
-('Sabrina','Hilde','05.07.1985','23.01','03.03.2022','Kunde B','20.62','X','','','1018883'),
-('Herbert','vonundzu','25.12.1956','15.34','04.04.2022','Kunde C','0.62','','X','X','1018822');
+('Maxli','SeppäToni','01.01.1999','11.23','02.02.2022','1','101.51','X','X','X','10181234'),
+('Sabrina','Hilde','05.07.1985','23.01','03.03.2022','2','20.62','X','','','1018883'),
+('Herbert','vonundzu','25.12.1956','15.34','04.04.2022','3','0.62','','X','X','1018822');
 
 #SELECT * FROM versandListeMubea;
 
@@ -112,6 +115,18 @@ SELECT * FROM kundeMubea;
 UPDATE kundeMubea SET KundeK ='Firma Brosch' WHERE ID_K=1;
 SELECT * FROM kundeMubea;
 SELECT * FROM versandlisteMubea;
+
+
+
+#Die Tabelle, welche man sehen möchte:
+SELECT versandListeMubea.ID_E, versandListeMubea.VnameE, versandListeMubea.NnameE, versandListeMubea.DatumE, versandListeMubea.UhrzeitE, versandListeMubea.WunschDatum, kundeMubea.KundeK, versandListeMubea.MengeTo, versandListeMubea.ArtikelAnLager, versandListeMubea.LSimLeitSystem, versandListeMubea.R_K, versandListeMubea.ArtikelNichtProd FROM versandListeMubea INNER JOIN kundeMubea ON kundeMubea.ID_K=versandListeMubea.ID_KV;
+
+
+
+
+
+
+#------------------------ab hier nicht in DB kopieren------------------------------------------------
 #--------------------------------------------------------------------------------------------
 #---------------------***************************+funktioniert
 DROP DATABASE mubeaVerkauf1DataBase;
@@ -263,6 +278,6 @@ VALUES (24, 'hans', 'deen',1),
 SELECT * FROM customers;
 SELECT * FROM city;
 SELECT customers.id, customers.fname, customers.lname, city.cityname FROM customers INNER JOIN city ON city.c_id=customers.city;
-#funktioniert mit inner Join, nun kann man sich virstellen, wie die DB ausschauen soll...
+#funktioniert mit inner Join, nun kann man sich vorstellen, wie die DB ausschauen soll...
 #SELECT * FROM customers, city;
 #SELECT cityname,id,fname from city, customers;
