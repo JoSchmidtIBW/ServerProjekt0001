@@ -2,6 +2,8 @@ import express from "express";
 import User from "../Controllers/UserInLoggt.mjs";
 import {erstelleUser} from "./loginRoute.mjs";
 import uuu11 from './loginRoute.mjs'
+import person from './loginRoute.mjs'
+import userArr from './loginRoute.mjs';
 
 import dbPool from "../lib/db.mjs";
 
@@ -46,7 +48,9 @@ router.get('/:maNummer', async(req, res)=>{
     //console.log("user1: "+user1)
     console.log("angemeldeterUser: "+user1.getNachnameU)
 
-
+    console.log("--------------------------------------------------------------------person: "+person)
+    console.log("----------------------------------------------------------------erstelleUser(): "+erstelleUser())
+    console.log("----------------------------------------------------------------userArrr: "+userArr)
 
     //let angemeldeterUser = Object.getID===gesplittetVonURLdenUserTeil;
     //console.log("angemeldeterUser: "+angemeldeterUser.getNachnameU())

@@ -81,7 +81,7 @@ router.get("/l", (req, res) => {
         xClicker: clicker()
     });
 });
-
+const userArr = [];
 router.post('/l', async(req, res)=>{
     let isMa_NummerInDB = false;
     let isPasswortUserInDB = false;
@@ -192,9 +192,18 @@ router.post('/l', async(req, res)=>{
 
         const userArr = Object.keys(uuu11);
 
-        console.log("userArr: "+userArr);//
+        console.log("userArr: "+userArr);//userArr: ma_NummerU,vornameU,nachnameU,passwortU,istChefU,id
 
+        console.log("/////////////////////////////////////////////////////////////////////////////////////");
+        const person = { firstName: 'John', lastName: 'Doe' };
+        const propertyNames = Object.keys(person);
+        console.log("propertyNames: "+propertyNames);
+        const propertyValues = Object.values(person);
+        console.log("propertyValues: "+propertyValues);
+        const entries = Object.entries(person);
+        console.log("entries: "+entries);
 
+        //export default person;
 
         //let b1 = object.getID()===1;
         // let b1 = uuu11.getID()===1;
@@ -214,7 +223,9 @@ router.post('/l', async(req, res)=>{
         query.append("KEY", "VALUE);
         location.href = "http://site.com/page?" + query.toString();
         */
-        res.redirect('/api/v1/inHome/:'+uuu11.getMa_NummerU()+"*"+uuu11.getPasswortU());//
+
+        res.redirect('/api/v1/inHome/:'+uuu11.getMa_NummerU()+"*"+uuu11.getPasswortU());//gut
+
         //res.redirect('/api/v1/inHome/:'+uuu11.getID());//
         //res.redirect('/api/v1/inHome/:'+uuu11);
         /*
@@ -229,6 +240,8 @@ router.post('/l', async(req, res)=>{
     //res.redirect('/api/inHome');
 });
 
+//export default person;
+//export default userArr; //export default router;SyntaxError: Identifier '.default' has already been declared
 
 
 /*
