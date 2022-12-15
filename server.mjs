@@ -9,6 +9,8 @@ import loginRoutes from './routes/loginRoute.mjs'
 import registryRoutes from './routes/registryRoute.mjs'
 import inHomeRoutes from './routes/inHomeRoute.mjs'
 
+import path from "path";
+
 //const express = require('express')
 const app = express()
 const port = 7080
