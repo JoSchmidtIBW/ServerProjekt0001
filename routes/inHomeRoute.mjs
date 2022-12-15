@@ -31,15 +31,41 @@ router.get('/:maNummer', async(req, res)=>{
     console.log("bin im inHomeRoute.mjs - GET")
     console.log("req: "+req.query)
     console.log("pathname: "+req.path)
+    //const myArr = req.path.split(':');
+    //console.log("myArr[1]: "+myArr[1]);
+    //let user1 = new User(myArr[1])
+    const myArr = req.path.split(':');
+    let gesplittetVonURLdenUserTeil = myArr[1];
+    console.log("gesplittetVonURLdenUserTeil: "+gesplittetVonURLdenUserTeil)
+
+    //let user = Object.getID===gesplittetVonURLdenUserTeil;
+    //console.log("user: "+user)
+    //console.log("angemeldeterUser: "+user.getNachnameU())
+    //console.log("iunhewiuniuejniunoiun: "+Object.getID())
+    let user1 = User.getID===1;
+    //console.log("user1: "+user1)
+    console.log("angemeldeterUser: "+user1.getNachnameU)
+
+
+
+    //let angemeldeterUser = Object.getID===gesplittetVonURLdenUserTeil;
+    //console.log("angemeldeterUser: "+angemeldeterUser.getNachnameU())
+
+    /*
     const myArr = req.path.split(':');
     console.log("myArr[1]: "+myArr[1]);
-    //let user1 = new User(myArr[1])
+    let gesplittetVonURLdenUserTeil = myArr[1];
+    */
+    console.log("gesplittetVonURLdenUserTeiiiil: "+gesplittetVonURLdenUserTeil)
+    const myArr1 = gesplittetVonURLdenUserTeil.split('*');
+    console.log(" gesplittet myArr1[0]: "+myArr1[0]+" gesplittet myArr1[1]: "+myArr1[1]);
 
-    let user = await erstelleUser(myArr[1]);//funktioniert :)
+    let user = await erstelleUser(myArr1[0],myArr1[1]);
     console.log("a: "+user.getMa_NummerU());
     console.log("a: "+user.getNachnameU());
     maNummerIH = user.getMa_NummerU();
     console.log("maNummerIH-GET: "+maNummerIH)
+    //*/
 
     //let user1 = new User().getMa_NummerU();
     //let user1 = new User();
@@ -69,11 +95,14 @@ router.post('/:maNummer', async(req, res)=>{
     let kundeIHServerEingabe = req.body.kundeIHEingabe;
     console.log("kundeIHServerEingabe: "+kundeIHServerEingabe)
 
-
     const myArr = req.path.split(':');
     console.log("myArr[1]: "+myArr[1]);
+    let gesplittetVonURLdenUserTeil = myArr[1];
+    console.log("gesplittetVonURLdenUserTeil: "+gesplittetVonURLdenUserTeil)
+    const myArr1 = gesplittetVonURLdenUserTeil.split('*');
+    console.log(" gesplittet myArr1[0]: "+myArr1[0]+" gesplittet myArr1[1]: "+myArr1[1]);
 
-    let user = await erstelleUser(myArr[1]);
+    let user = await erstelleUser(myArr1[0],myArr1[1]);
     console.log("b: "+user.getMa_NummerU());
     console.log("b: "+user.getNachnameU());
 
@@ -89,6 +118,7 @@ router.post('/:maNummer', async(req, res)=>{
 
     //res.render("<h1>Hellllllo</h1>");
 });
+
 
 async function schreibeKundeInDB(user, kundeIHServerEingabe){
     console.log("bin schreibeKundeinDB");

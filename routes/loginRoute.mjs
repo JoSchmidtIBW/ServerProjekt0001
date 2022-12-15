@@ -110,7 +110,7 @@ router.post('/l', async(req, res)=>{
     let data= passwortL;//Message to Encrypt
     let iv  = CryptoJS.enc.Base64.parse("");//giving empty initialization vector
     let key=CryptoJS.SHA256("mySecretKey1");//hashing the key using SHA256
-    var encryptedString=encryptData(data,iv,key);//muss var sein
+    var encryptedString=encryptData(data,iv,key);//muss var sein//
     console.log("encryptedString: "+encryptedString);//genrated encryption String:  swBX2r1Av2tKpdN7CYisMg==
 
     function encryptData(data,iv,key){
@@ -177,15 +177,36 @@ router.post('/l', async(req, res)=>{
             xClicker: clicker()
         });
     }else if(isMa_NummerInDB===true&&isPasswortUserInDB===true){
-        let uuu11=await erstelleUser(maNummerL);
+        console.log("isMa_NummerInDB und isPasswortUserInDB sind true");
+        console.log("encryptedString: "+encryptedString)
+
+        // User.counter=0;
+
+
+        let uuu11=await erstelleUser(maNummerL,encryptedString);
+
         console.log("uuu11: "+uuu11.getMa_NummerU())
+        //console.log("uuu11 this.id: "+uuu11._id);
+        //console.log("uuu11 idddddddddddd: "+uuu11.id1);
+        console.log("uuu11.getID: "+uuu11.getID());
+
+        const userArr = Object.keys(uuu11);
+
+        console.log("userArr: "+userArr);//
+
+
+
+        //let b1 = object.getID()===1;
+        // let b1 = uuu11.getID()===1;
+        // console.log("b1 nachname mit ID=2: "+b1.getNachnameU)
+
         //module.exports= uuu11;
         //export default uuu11.getMa_NummerU();
         //export default uuu11;
         //module.exports={uuu11}
         //if(module) module.exports = {uuu11}; // On node.js, use exports
-       // else if(window) window.foo = uuu11; // In browser, use window
-       // else console.error('Unknown environment');
+        // else if(window) window.foo = uuu11; // In browser, use window
+        // else console.error('Unknown environment');
         // man könnte den user in der URL anzeigen, und diesen auch von dort wieder nehmen...
 
         /*
@@ -193,7 +214,9 @@ router.post('/l', async(req, res)=>{
         query.append("KEY", "VALUE);
         location.href = "http://site.com/page?" + query.toString();
         */
-        res.redirect('/api/v1/inHome/:'+maNummerL);//
+        res.redirect('/api/v1/inHome/:'+uuu11.getMa_NummerU()+"*"+uuu11.getPasswortU());//
+        //res.redirect('/api/v1/inHome/:'+uuu11.getID());//
+        //res.redirect('/api/v1/inHome/:'+uuu11);
         /*
         res.render('pages/login',{
             maNummerLServer : "MA_Nummer gefunden :)",
@@ -208,8 +231,6 @@ router.post('/l', async(req, res)=>{
 
 
 
-
-
 /*
   router.post('/l', async(req, res)=>{
     //werIstAngemeldet12= req.body.werIstAngemeldetH;
@@ -218,12 +239,9 @@ router.post('/l', async(req, res)=>{
     console.log("maaaaNummerL: "+maNummerL)
     passwortL = req.body.passwortLEingabe;
     console.log("paaaaasswortL: "+passwortL)
-
     console.log("check- Ausgabe: "+ await check(maNummerL,passwortL));
-
     let isAuthentifiziert = await check(maNummerL,passwortL);
     console.log("isAuthentifiziert: "+isAuthentifiziert);
-
     if(isAuthentifiziert===true){
         res.redirect('/api/inHome');
     }else{
@@ -259,7 +277,6 @@ async function sucheInDBmaNummerPasswort(maNummer,passwort){
     }
 }
 
-
 //todo getconnection problem!!!
 let counterDB = 0;
 async function sucheInDBmaNummer(maNummer){
@@ -283,12 +300,17 @@ async function sucheInDBmaNummer(maNummer){
     }
 }
 
-
-export async function erstelleUser(maNummer){
-    console.log("Bin erstelle User")
+export async function erstelleUser(maNummer, passwortL){
+    console.log("Bin erstelle User, habe bekommen: "+maNummer+", "+passwortL)
     let ausgabeDB = "";
-    ausgabeDB = await sucheInDBmaNummer(maNummer);
+    ausgabeDB = await sucheInDBmaNummerPasswort(maNummer, passwortL);
+    //User.id1=0;
     let u1 = new User();
+    console.log("-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*");
+    //console.log(u1.Id)
+    //console.log(u1.id1)
+    console.log(u1.getID());
+    console.log("-*-*-*-*-*-*-*-*-*-*-*-*-**-*-*-*-*");
     u1.setMa_NummerU(splitDB_DBObj(ausgabeDB).MA_Nummer);
     u1.setVornameU(splitDB_DBObj(ausgabeDB).Vorname);
     u1.setNachnameU(splitDB_DBObj(ausgabeDB).Nachname);
@@ -327,21 +349,17 @@ async function checkPasswort(maNummer,passwort){
         u1.setNachnameU(splitDB_DBObj(ausgabeDB).Nachname);
         u1.setPasswortU(splitDB_DBObj(ausgabeDB).Passwort_User);
         u1.setIstChefU(splitDB_DBObj(ausgabeDB).IstChef);
-
         console.log("U1-MaNummer:   "+ u1.getMa_NummerU())
         console.log("U1-Vorname:   "+ u1.getVornameU())
         console.log("U1-Nachname:   "+ u1.getNachnameU())
         console.log("U1-Passwort:   "+ u1.getPasswortU())
         console.log("U1-istChef:   "+ u1.getIstChefU())
         //console.log("oo2: "+splitDB_DBObj(ausgabeDB).MA_Nummer)
-
          */
         isPasswort = true;
     }
     return isPasswort;
 }
-
-
 
 async function checkMaNummer(maNummer){
     console.log("bin checkMaNummer-Funktion, habe bekommen: "+maNummer);
@@ -365,7 +383,6 @@ async function checkMaNummer(maNummer){
         u1.setNachnameU(splitDB_DBObj(ausgabeDB).Nachname);
         u1.setPasswortU(splitDB_DBObj(ausgabeDB).Passwort_User);
         u1.setIstChefU(splitDB_DBObj(ausgabeDB).IstChef);
-
         console.log("U1-MaNummer:   "+ u1.getMa_NummerU())
         console.log("U1-Vorname:   "+ u1.getVornameU())
         console.log("U1-Nachname:   "+ u1.getNachnameU())
@@ -413,7 +430,6 @@ function splitDB_DBObj(ausgabeDBZumSplitten){
     //todo: setter und getter, ev eigene Klasse
 }
 
-
 export default router;
 
 /*
@@ -429,7 +445,6 @@ export default router;
        res.end(jsonS);
    }
    catch(e){
-
    }
  })
 */
