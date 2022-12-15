@@ -228,3 +228,40 @@ SELECT * FROM transactions, customers;
 
 UPDATE customers SET first_name = 'Hansoo' WHERE customer_id=1;
 SELECT * FROM transactions, customers;
+
+
+#---------------------------------------------------+
+#https://www.youtube.com/watch?v=unREmbNASaI
+DROP DATABASE mubeaVerkauf3DataBase;
+CREATE DATABASE mubeaVerkauf3DataBase;
+SHOW DATABASES;
+USE mubeaVerkauf3DataBase;
+
+CREATE TABLE city (
+c_id INT NOT NULL AUTO_INCREMENT,
+cityname VARCHAR(50) NOT NULL,
+PRIMARY KEY (c_id)
+);
+INSERT INTO city(cityname)
+VALUES ('chur'),
+('landquart'),
+('Zurich');
+
+CREATE TABLE customers(
+id INT NOT NULL,
+fname VARCHAR(50),
+lname VARCHAR(50),
+city INT NOT NULL,
+PRIMARY KEY (id),
+Foreign KEY (city) REFERENCES city(c_id)
+);
+INSERT INTO customers(id,fname, lname, city)
+VALUES (24, 'hans', 'deen',1),
+(25, 'peter','muster',2),
+(26, 'maria', 'mariadb',3);
+
+SELECT * FROM customers;
+SELECT * FROM city;
+SELECT customers.id, customers.fname, customers.lname, city.cityname FROM customers INNER JOIN city ON city.c_id=customers.city;
+#SELECT * FROM customers, city;
+#SELECT cityname,id,fname from city, customers;
