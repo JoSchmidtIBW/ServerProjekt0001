@@ -41,6 +41,20 @@ router.get('/:maNummer', async(req, res)=>{
     let gesplittetVonURLdenUserTeil = myArr[1];
     console.log("gesplittetVonURLdenUserTeil: "+gesplittetVonURLdenUserTeil)
 
+    //let objBekommen = Object.keys(gesplittetVonURLdenUserTeil)
+    //let objBekommen = Object
+
+    //console.log("objBekommen: "+objBekommen)
+    //const object = array.find(obj => obj.id === 3);
+
+    const person = { firstName: 'John', lastName: 'Doe' };
+    const propertyNames = Object.keys(person);
+    console.log("propertyNames: "+propertyNames);
+    const propertyValues = Object.values(person);
+    console.log("propertyValues: "+propertyValues);
+    const entries = Object.entries(person);
+    console.log("entries: "+entries);
+
     //let user = Object.getID===gesplittetVonURLdenUserTeil;
     //console.log("user: "+user)
     //console.log("angemeldeterUser: "+user.getNachnameU())

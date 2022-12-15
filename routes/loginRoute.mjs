@@ -82,6 +82,8 @@ router.get("/l", (req, res) => {
     });
 });
 //const userArr = "";
+//export default person;
+let person;
 let userArr33;
 router.post('/l', async(req, res)=>{
     let isMa_NummerInDB = false;
@@ -200,7 +202,8 @@ router.post('/l', async(req, res)=>{
        // console.log(propertyNames1);
 
         console.log("/////////////////////////////////////////////////////////////////////////////////////");
-        const person = { firstName: 'John', lastName: 'Doe' };
+        person = { firstName: 'John', lastName: 'Doe' };
+        console.log("person: "+person) // [object Object]
         const propertyNames = Object.keys(person);
         console.log("propertyNames: "+propertyNames);
         const propertyValues = Object.values(person);
@@ -230,6 +233,8 @@ router.post('/l', async(req, res)=>{
         */
 
         res.redirect('/api/v1/inHome/:'+uuu11.getMa_NummerU()+"*"+uuu11.getPasswortU());//gut
+       // res.redirect('/api/v1/inHome/:'+uuu11.getID());//gut
+       // res.redirect('/api/v1/inHome/:'+uuu11);//gut
 
         /*
         res.redirect('/api/v1/inHome/:',({
