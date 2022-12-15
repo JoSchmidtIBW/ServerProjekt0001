@@ -4,6 +4,7 @@ import {erstelleUser} from "./loginRoute.mjs";
 import uuu11 from './loginRoute.mjs'
 import person from './loginRoute.mjs'
 import userArr from './loginRoute.mjs';
+import Object from './loginRoute.mjs'
 
 import dbPool from "../lib/db.mjs";
 

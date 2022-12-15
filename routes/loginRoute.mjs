@@ -81,7 +81,8 @@ router.get("/l", (req, res) => {
         xClicker: clicker()
     });
 });
-const userArr = [];
+//const userArr = "";
+let userArr33;
 router.post('/l', async(req, res)=>{
     let isMa_NummerInDB = false;
     let isPasswortUserInDB = false;
@@ -190,9 +191,13 @@ router.post('/l', async(req, res)=>{
         //console.log("uuu11 idddddddddddd: "+uuu11.id1);
         console.log("uuu11.getID: "+uuu11.getID());
 
-        const userArr = Object.keys(uuu11);
+         userArr33 = Object.keys(uuu11);
+         //module.exports= Object.keys(uuu11);
+        //module.exports= userArr33;
+        console.log("userArr33: "+userArr33);//userArr: ma_NummerU,vornameU,nachnameU,passwortU,istChefU,id
 
-        console.log("userArr: "+userArr);//userArr: ma_NummerU,vornameU,nachnameU,passwortU,istChefU,id
+       // const propertyNames1 = Object.keys(person);
+       // console.log(propertyNames1);
 
         console.log("/////////////////////////////////////////////////////////////////////////////////////");
         const person = { firstName: 'John', lastName: 'Doe' };
@@ -226,22 +231,30 @@ router.post('/l', async(req, res)=>{
 
         res.redirect('/api/v1/inHome/:'+uuu11.getMa_NummerU()+"*"+uuu11.getPasswortU());//gut
 
+        /*
+        res.redirect('/api/v1/inHome/:',({
+            pathname:"/",
+            query: {
+                "a": 1,
+                "b": 2,
+                "valid":"your string here"
+            }
+        }));
+         */
         //res.redirect('/api/v1/inHome/:'+uuu11.getID());//
         //res.redirect('/api/v1/inHome/:'+uuu11);
         /*
-        res.render('pages/login',{
-            maNummerLServer : "MA_Nummer gefunden :)",
-            passwortLServer : "Passwort richtig :)",
-            xClicker: clicker()
+        res.render('pages/inHome',{
+
         });
          */
     }
     //funktioniert
     //res.redirect('/api/inHome');
 });
-
+//export default entries;
 //export default person;
-//export default userArr; //export default router;SyntaxError: Identifier '.default' has already been declared
+//export default userArr33; //export default router;SyntaxError: Identifier '.default' has already been declared
 
 
 /*
@@ -442,9 +455,9 @@ function splitDB_DBObj(ausgabeDBZumSplitten){
     return dbObj;
     //todo: setter und getter, ev eigene Klasse
 }
-
+//export default userArr;
+//export default {router, userArr};
 export default router;
-
 /*
  router.post('/l', async(req,res) =>{//achtung, es muss hier async sein sonst geht nivcht
    let conn;
