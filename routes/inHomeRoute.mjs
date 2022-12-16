@@ -5,6 +5,8 @@ import uuu11 from './loginRoute.mjs'
 import person from './loginRoute.mjs'
 import userArr from './loginRoute.mjs';
 import Object from './loginRoute.mjs'
+import {name1} from "./loginRoute.mjs";
+import {userArr33} from "./loginRoute.mjs";
 
 import dbPool from "../lib/db.mjs";
 
@@ -37,6 +39,10 @@ router.get('/:maNummer', async(req, res)=>{
     //const myArr = req.path.split(':');
     //console.log("myArr[1]: "+myArr[1]);
     //let user1 = new User(myArr[1])
+
+    console.log("name1 import "+name1);
+    console.log("userArr33 import "+userArr33);
+
     const myArr = req.path.split(':');
     let gesplittetVonURLdenUserTeil = myArr[1];
     console.log("gesplittetVonURLdenUserTeil: "+gesplittetVonURLdenUserTeil)
@@ -46,7 +52,7 @@ router.get('/:maNummer', async(req, res)=>{
 
     //console.log("objBekommen: "+objBekommen)
     //const object = array.find(obj => obj.id === 3);
-
+/*
     const person = { firstName: 'John', lastName: 'Doe' };
     const propertyNames = Object.keys(person);
     console.log("propertyNames: "+propertyNames);
@@ -54,17 +60,17 @@ router.get('/:maNummer', async(req, res)=>{
     console.log("propertyValues: "+propertyValues);
     const entries = Object.entries(person);
     console.log("entries: "+entries);
-
+*/
     //let user = Object.getID===gesplittetVonURLdenUserTeil;
     //console.log("user: "+user)
     //console.log("angemeldeterUser: "+user.getNachnameU())
     //console.log("iunhewiuniuejniunoiun: "+Object.getID())
-    let user1 = User.getID===1;
+   // let user1 = User.getID===1;
     //console.log("user1: "+user1)
-    console.log("angemeldeterUser: "+user1.getNachnameU)
+   // console.log("angemeldeterUser: "+user1.getNachnameU)
 
     console.log("--------------------------------------------------------------------person: "+person)
-    console.log("----------------------------------------------------------------erstelleUser(): "+erstelleUser())
+    //console.log("----------------------------------------------------------------erstelleUser(): "+erstelleUser())
     console.log("----------------------------------------------------------------userArrr: "+userArr)
 
     //let angemeldeterUser = Object.getID===gesplittetVonURLdenUserTeil;
@@ -79,11 +85,14 @@ router.get('/:maNummer', async(req, res)=>{
     const myArr1 = gesplittetVonURLdenUserTeil.split('*');
     console.log(" gesplittet myArr1[0]: "+myArr1[0]+" gesplittet myArr1[1]: "+myArr1[1]);
 
+    /*
     let user = await erstelleUser(myArr1[0],myArr1[1]);
     console.log("a: "+user.getMa_NummerU());
     console.log("a: "+user.getNachnameU());
     maNummerIH = user.getMa_NummerU();
     console.log("maNummerIH-GET: "+maNummerIH)
+    */
+
     //*/
 
     //let user1 = new User().getMa_NummerU();
@@ -93,9 +102,12 @@ router.get('/:maNummer', async(req, res)=>{
     // // Get an array of flash messages by passing the key to req.flash()
     res.render('pages/inHome', {
         //werIstAngemeldetH:user1.getMa_NummerU()
-        werIstAngemeldetH:user.getVornameU()+" "+user.getNachnameU(),
+        /*werIstAngemeldetH:user.getVornameU()+" "+user.getNachnameU(),
         kundeIHServer:  "hoi kunde",
-        MaNummerServer: user.getMa_NummerU()
+        MaNummerServer: user.getMa_NummerU()*/
+        werIstAngemeldetH:myArr1[0]+" "+myArr1[1],
+        kundeIHServer:  "hoi kunde",
+        MaNummerServer: myArr1[0]
     });
 });
 

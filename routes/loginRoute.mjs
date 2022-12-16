@@ -84,7 +84,10 @@ router.get("/l", (req, res) => {
 //const userArr = "";
 //export default person;
 let person;
-let userArr33;
+var userArr33;
+let name1 = "hallo"
+export { name1};
+export { userArr33};
 router.post('/l', async(req, res)=>{
     let isMa_NummerInDB = false;
     let isPasswortUserInDB = false;
@@ -201,7 +204,7 @@ router.post('/l', async(req, res)=>{
        // const propertyNames1 = Object.keys(person);
        // console.log(propertyNames1);
 
-        console.log("/////////////////////////////////////////////////////////////////////////////////////");
+        console.log("//////////////////////////////////////////////////////////////////////////////////////");
         person = { firstName: 'John', lastName: 'Doe' };
         console.log("person: "+person) // [object Object]
         const propertyNames = Object.keys(person);
@@ -232,9 +235,11 @@ router.post('/l', async(req, res)=>{
         location.href = "http://site.com/page?" + query.toString();
         */
 
-        res.redirect('/api/v1/inHome/:'+uuu11.getMa_NummerU()+"*"+uuu11.getPasswortU());//gut
+       // res.redirect('/api/v1/inHome/:'+uuu11.getMa_NummerU()+"*"+uuu11.getPasswortU());//gut
        // res.redirect('/api/v1/inHome/:'+uuu11.getID());//gut
        // res.redirect('/api/v1/inHome/:'+uuu11);//gut
+       // res.redirect('/api/v1/inHome/:'+userArr33);
+        res.redirect('/api/v1/inHome/:'+entries+" "+propertyValues);
 
         /*
         res.redirect('/api/v1/inHome/:',({
