@@ -1,6 +1,4 @@
-//'use strict';
-
-export default class User {
+ class User {
 
     //static id1 = 0;
     static id = 0;
@@ -45,7 +43,7 @@ export default class User {
     setVornameU(vornameU) {
         this.vornameU = vornameU;
     }
-    getNachnameU() {
+     getNachnameU() {
         return this.nachnameU;
     }
     setNachnameU(nachnameU) {
@@ -63,5 +61,7 @@ export default class User {
     setIstChefU(istChefU) {
         this.istChefU = istChefU;
     }
+
 }
-//export * from 'UserInLoggt';
+export default User.getNachnameU();
+//export * from 'UserInLoggt2';

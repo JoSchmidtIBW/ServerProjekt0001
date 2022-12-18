@@ -2,13 +2,16 @@ import express from "express";
 import User from "../Controllers/UserInLoggt.mjs";
 import {erstelleUser} from "./loginRoute.mjs";
 import uuu11 from './loginRoute.mjs'
+import UserInLoggt from '../Controllers/UserInLoggt.mjs'
 import person from './loginRoute.mjs'
 import userArr from './loginRoute.mjs';
 import Object from './loginRoute.mjs'
 import {name1} from "./loginRoute.mjs";
 import {userArr33} from "./loginRoute.mjs";
+import{getPersonInfo,setAge} from "../Controllers/personUser.mjs"
 
 import dbPool from "../lib/db.mjs";
+//import {getPersonInfo, setAge} from "../Controllers/personUser.mjs";
 
 const router = express.Router();
 
@@ -31,6 +34,9 @@ router.get('/',(req,res)=>{
 })
 */
 let maNummerIH = "";
+let user333= userArr33;
+console.log("hjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj")
+
 router.get('/:maNummer', async(req, res)=>{
 
     console.log("bin im inHomeRoute.mjs - GET")
@@ -42,10 +48,24 @@ router.get('/:maNummer', async(req, res)=>{
 
     console.log("name1 import "+name1);
     console.log("userArr33 import "+userArr33);
+   // const propertyValues = Object.values(userArr33);
+  //  console.log("userArr33 propertyValues: "+propertyValues);
+    console.log("user333 import "+user333);
+
+    //let c =
+    //console.log("???????: "+UserInLoggt)
+    /*
+    console.log("user.id: "+User.id);//1
+    let user = <User>{
+        // properties of User interface
+    };
+    console.log(user);*/
 
     const myArr = req.path.split(':');
     let gesplittetVonURLdenUserTeil = myArr[1];
     console.log("gesplittetVonURLdenUserTeil: "+gesplittetVonURLdenUserTeil)
+
+    console.log("getPersonInfo: "+getPersonInfo)
 
     //let objBekommen = Object.keys(gesplittetVonURLdenUserTeil)
     //let objBekommen = Object
@@ -72,6 +92,8 @@ router.get('/:maNummer', async(req, res)=>{
     console.log("--------------------------------------------------------------------person: "+person)
     //console.log("----------------------------------------------------------------erstelleUser(): "+erstelleUser())
     console.log("----------------------------------------------------------------userArrr: "+userArr)
+
+    //let ac = Uf
 
     //let angemeldeterUser = Object.getID===gesplittetVonURLdenUserTeil;
     //console.log("angemeldeterUser: "+angemeldeterUser.getNachnameU())

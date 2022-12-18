@@ -2,6 +2,10 @@ import express from "express";
 import dbPool from "../lib/db.mjs";
 import User from '../Controllers/UserInLoggt.mjs';
 import CryptoJS from 'crypto-js';
+//import personUser from '../Controllers/personUser.mjs';
+import{getPersonInfo,setAge,setFirstName,setLastName} from "../Controllers/personUser.mjs"
+import person23 from '../Controllers/person23.mjs';
+import UserInLoggt2 from '../Controllers/UserInLoggt2.mjs'
 
 const router = express.Router();
 /*
@@ -87,7 +91,7 @@ let person;
 var userArr33;
 let name1 = "hallo"
 export { name1};
-export { userArr33};
+//export { userArr33};
 router.post('/l', async(req, res)=>{
     let isMa_NummerInDB = false;
     let isPasswortUserInDB = false;
@@ -201,6 +205,41 @@ router.post('/l', async(req, res)=>{
         //module.exports= userArr33;
         console.log("userArr33: "+userArr33);//userArr: ma_NummerU,vornameU,nachnameU,passwortU,istChefU,id
 
+        //UserInLoggt2
+/*
+//person23.setAge()
+// Sets first name
+        person23.setFirstName('Steve');
+
+// Sets last name
+        person23.setLastName('Jobs');
+
+// Sets age
+        person23.setAge(56);
+
+// Outputs first name, last name, and age as an object literal
+        console.log(person23.getPersonInfo());
+*/
+       // personUser.
+       // let sfn = setFirstName("Hansiii");
+      //  sfn= "Hansiii";
+       // setLastName= "müller";
+       // setAge=35;
+/*
+        // Sets first name
+        personUser.setFirstName('Steve');
+
+
+// Sets last name
+        personUser.setLastName('Jobs');
+
+// Sets age
+        personUser.setAge(56);
+
+// Outputs first name, last name, and age as an object literal
+        console.log(personUser.getPersonInfo());
+*/
+
        // const propertyNames1 = Object.keys(person);
        // console.log(propertyNames1);
 
@@ -208,11 +247,11 @@ router.post('/l', async(req, res)=>{
         person = { firstName: 'John', lastName: 'Doe' };
         console.log("person: "+person) // [object Object]
         const propertyNames = Object.keys(person);
-        console.log("propertyNames: "+propertyNames);
+        console.log("propertyNames: "+propertyNames);//firstName,lastName
         const propertyValues = Object.values(person);
-        console.log("propertyValues: "+propertyValues);
+        console.log("propertyValues: "+propertyValues);// John,Doe
         const entries = Object.entries(person);
-        console.log("entries: "+entries);
+        console.log("entries: "+entries);//firstName,John,lastName,Doe
 
         //export default person;
 
@@ -362,6 +401,8 @@ export async function erstelleUser(maNummer, passwortL){
     return u1;
 }
 
+
+
 //todo wenn ma_nummer zweimal vorkommt???? und getconnection-problem!!!!
 async function checkPasswort(maNummer,passwort){
     console.log("bin checkPasswort-Funktion, habe bekommen: "+maNummer+', '+passwort);
@@ -467,6 +508,7 @@ function splitDB_DBObj(ausgabeDBZumSplitten){
 }
 //export default userArr;
 //export default {router, userArr};
+export { userArr33};
 export default router;
 /*
  router.post('/l', async(req,res) =>{//achtung, es muss hier async sein sonst geht nivcht
