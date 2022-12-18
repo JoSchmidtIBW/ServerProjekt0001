@@ -63,5 +63,5 @@
     }
 
 }
-export default User.getNachnameU();
+//export default User.getNachnameU();
 //export * from 'UserInLoggt2';

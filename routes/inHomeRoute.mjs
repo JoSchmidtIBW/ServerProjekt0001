@@ -9,8 +9,10 @@ import Object from './loginRoute.mjs'
 import {name1} from "./loginRoute.mjs";
 import {userArr33} from "./loginRoute.mjs";
 import{getPersonInfo,setAge} from "../Controllers/personUser.mjs"
-
+import myUser from '../Controllers/myUser.mjs';
 import dbPool from "../lib/db.mjs";
+import * as Console from "console";
+import myUser2 from "../Controllers/myUser2.mjs";
 //import {getPersonInfo, setAge} from "../Controllers/personUser.mjs";
 
 const router = express.Router();
@@ -92,6 +94,14 @@ router.get('/:maNummer', async(req, res)=>{
     console.log("--------------------------------------------------------------------person: "+person)
     //console.log("----------------------------------------------------------------erstelleUser(): "+erstelleUser())
     console.log("----------------------------------------------------------------userArrr: "+userArr)
+
+
+    Console.log("getNameEnte: "+myUser2.getNameEnte())
+    console.log("myUser.getName: "+myUser.getName());
+    console.log(
+        `${myUser.getName()} lives in ${myUser.getLocation()} and was born on ${myUser.dob}.`
+    );
+
 
     //let ac = Uf
 

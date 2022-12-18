@@ -4,8 +4,8 @@ import User from '../Controllers/UserInLoggt.mjs';
 import CryptoJS from 'crypto-js';
 //import personUser from '../Controllers/personUser.mjs';
 import{getPersonInfo,setAge,setFirstName,setLastName} from "../Controllers/personUser.mjs"
-import person23 from '../Controllers/person23.mjs';
-import UserInLoggt2 from '../Controllers/UserInLoggt2.mjs'
+//import person23 from '../Controllers/person23.mjs';
+//import UserInLoggt2 from '../Controllers/UserInLoggt2.mjs'
 
 const router = express.Router();
 /*
