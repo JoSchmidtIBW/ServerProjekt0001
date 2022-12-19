@@ -140,7 +140,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 // all routes in here starting with /login
-app.use('/api/v1/login', loginRoutes);
+app.use('/api/v1/login', loginRoutes);//versuchen, hier ein user zu erstellen, und wenn hier boolean...
 // all routes in here starting with /registrieren
 app.use('/api/v1/registrieren', registryRoutes);
 app.use('/api/v1/inHome', inHomeRoutes);
