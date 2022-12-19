@@ -2,6 +2,12 @@ import express from "express";
 import dbPool from "../lib/db.mjs";
 import User from '../Controllers/UserInLoggt.mjs';
 import CryptoJS from 'crypto-js';
+import user222 from '../Controllers/user222.mjs'
+//import student from "../Controllers/student.mjs";
+
+//import Student from "../Controllers/student.mjs";
+import myUser2 from "../Controllers/myUser2.mjs";
+import UserInLoggt2 from '../Controllers/UserInLoggt2.mjs'
 //import personUser from '../Controllers/personUser.mjs';
 import{getPersonInfo,setAge,setFirstName,setLastName} from "../Controllers/personUser.mjs"
 //import person23 from '../Controllers/person23.mjs';
@@ -204,6 +210,23 @@ router.post('/l', async(req, res)=>{
          //module.exports= Object.keys(uuu11);
         //module.exports= userArr33;
         console.log("userArr33: "+userArr33);//userArr: ma_NummerU,vornameU,nachnameU,passwortU,istChefU,id
+
+
+
+        const id = '123456',
+            secret   = '8787';
+
+        const user222 = new User(id, secret)
+        console.log("user222: "+user222);
+
+        exports = {user222};
+
+       // student.setVornameU("HEnte");
+        //console.log(student
+
+        //UserInLoggt2.
+        //myUser2.setNameEnte3("haaannnssoooo");
+       // console.log("myUser2.getname: "+myUser2.getNameEnte())
 
         //UserInLoggt2
 /*

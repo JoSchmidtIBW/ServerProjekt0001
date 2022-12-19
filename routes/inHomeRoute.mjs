@@ -13,6 +13,7 @@ import myUser from '../Controllers/myUser.mjs';
 import dbPool from "../lib/db.mjs";
 import * as Console from "console";
 import myUser2 from "../Controllers/myUser2.mjs";
+import user222 from '../Controllers/user222.mjs'
 //import {getPersonInfo, setAge} from "../Controllers/personUser.mjs";
 
 const router = express.Router();
@@ -102,7 +103,8 @@ router.get('/:maNummer', async(req, res)=>{
         `${myUser.getName()} lives in ${myUser.getLocation()} and was born on ${myUser.dob}.`
     );
 
-
+   // const user = require('./yourFile.js')
+    console.log(user222)
     //let ac = Uf
 
     //let angemeldeterUser = Object.getID===gesplittetVonURLdenUserTeil;
